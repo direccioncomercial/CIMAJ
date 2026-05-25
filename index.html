@@ -145,14 +145,16 @@
                 <span class="uppercase tracking-widest font-bold">Síguenos:</span>
                 <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
 
         <nav class="max-w-7xl mx-auto px-4 relative">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
+            <!-- Navbar Height Ajustado a h-28 md:h-32 para el logo grande -->
+            <div class="flex justify-between h-28 md:h-32 items-center">
+                <!-- Logo Agrandado -->
                 <a href="javascript:void(0)" onclick="navigate('home')" class="flex-shrink-0 flex items-center cursor-pointer group z-50">
-                    <img class="h-14 md:h-16 w-auto transition-transform group-hover:scale-105" src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" alt="CIMAJ Logo" />
+                    <img class="h-20 md:h-28 w-auto transition-transform group-hover:scale-105" src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" alt="CIMAJ Logo" />
                 </a>
                 
                 <!-- Menú Desktop -->
@@ -200,6 +202,7 @@
             <div class="flex-grow space-y-2 overflow-y-auto">
                 <button onclick="navigate('home')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Inicio</button>
                 <button onclick="navigate('historia')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Nuestra Historia</button>
+                <button onclick="navigate('equipo')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Directiva</button>
                 <button onclick="navigate('servicios')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Servicios</button>
                 <button onclick="navigate('revista')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Revista Oficial</button>
                 <button onclick="navigate('multimedia')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Multimedia y Medios</button>
@@ -223,7 +226,7 @@
         <section id="view-home" class="view-section view-active">
             <!-- HERO CAROUSEL -->
             <div class="relative h-screen carousel-container">
-                <!-- Slide 1: Enfocado más a la izquierda -->
+                <!-- Slide 1 -->
                 <div class="carousel-slide active" id="slide-0">
                     <div class="absolute inset-0">
                         <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/comite.jpg" alt="CIMAJ" class="w-full h-full object-cover object-[20%_center] opacity-60" />
@@ -270,10 +273,10 @@
                     </div>
                 </div>
 
-                <!-- Slide 3: Defensa -->
+                <!-- Slide 3: Defensa (Imagen actualizada) -->
                 <div class="carousel-slide" id="slide-2">
                     <div class="absolute inset-0">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1920" alt="Defensa Legal" class="w-full h-full object-cover opacity-50" />
+                        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/Legal%20penal%20y%20civil.png" alt="Defensa Legal" class="w-full h-full object-cover opacity-50" />
                         <div class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"></div>
                     </div>
                     <div class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20">
@@ -323,7 +326,7 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN EQUIPO (Ubicada en la vista principal con Glass Hover) -->
+            <!-- SECCIÓN EQUIPO -->
             <div class="pt-24 pb-32">
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="text-center mb-16">
@@ -333,8 +336,7 @@
                     
                     <div class="relative border border-white/10 overflow-hidden group rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-16">
                         <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/equipo.jpg" alt="Equipo" class="w-full h-[50vh] md:h-[60vh] object-cover transition-all duration-[1000ms] ease-in-out group-hover:scale-[1.02]" />
-                        <!-- Glassmorphism overlay on hover -->
-                        <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/5 group-hover:backdrop-blur-[2px] transition-all duration-700 z-10 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/60 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70 z-20 pointer-events-none"></div>
                         
                         <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full z-30">
@@ -344,52 +346,56 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <!-- Carlos -->
+                        <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
                             <div class="aspect-[3/4] overflow-hidden relative">
                                 <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
                             </div>
-                            <div class="p-6 relative z-30 -mt-16">
+                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
                                 <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
                                 <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
-                                <p class="text-slate-300 text-sm font-light">Especialista en investigación criminalística y estrategia penal.</p>
+                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
                             </div>
                         </div>
-                        <div class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <!-- Daniela -->
+                        <div onclick="openInfoModal('daniela')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
                             <div class="aspect-[3/4] overflow-hidden relative">
                                 <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/daniela.png" alt="Daniela" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
                             </div>
-                            <div class="p-6 relative z-30 -mt-16">
+                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
                                 <h4 class="text-xl text-white font-serif font-bold">Abg. Daniela Ortega</h4>
                                 <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Derecho Penal</p>
-                                <p class="text-slate-300 text-sm font-light">Experiencia en litigios complejos y resultados favorables a nivel nacional.</p>
+                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
                             </div>
                         </div>
-                        <div class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <!-- Luis Miguel -->
+                        <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
                             <div class="aspect-[3/4] overflow-hidden relative">
                                 <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
                             </div>
-                            <div class="p-6 relative z-30 -mt-16">
+                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
                                 <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
                                 <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Constitucional</p>
-                                <p class="text-slate-300 text-sm font-light">Colaborador en proyectos de ley y fiscalización en la Asamblea Nacional.</p>
+                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
                             </div>
                         </div>
-                        <div class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <!-- Viviana -->
+                        <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
                             <div class="aspect-[3/4] overflow-hidden relative">
                                 <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
                             </div>
-                            <div class="p-6 relative z-30 -mt-16">
+                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
                                 <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
                                 <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
-                                <p class="text-slate-300 text-sm font-light">Especialista en mediación y resolución alternativa de conflictos.</p>
+                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
                             </div>
                         </div>
                     </div>
@@ -407,7 +413,6 @@
                     <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Compromiso con la Excelencia</h2>
                 </div>
                 
-                <!-- Misión y Visión -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
                     <div class="glass-panel p-10 rounded-2xl hover:border-[#C5A059]/50 transition-colors shadow-2xl">
                         <i class="fa-solid fa-shield-halved text-4xl text-[#C5A059] mb-6 drop-shadow-lg"></i>
@@ -426,7 +431,6 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
                         <div class="md:col-span-1 overflow-hidden rounded-2xl shadow-lg border border-white/5 relative">
                             <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Dr. Carlos Cisneros" class="w-full h-auto object-cover transition-all duration-700 transform group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-[2px] transition-all duration-500 z-10 pointer-events-none"></div>
                         </div>
                         <div class="md:col-span-2 space-y-6 z-20">
                             <h3 class="text-[#C5A059] font-bold tracking-widest text-sm uppercase">Mensaje del CEO y Director Jurídico</h3>
@@ -443,6 +447,73 @@
         </section>
 
         <!-- ==========================================
+             VISTA 2.5: DIRECTIVA (EQUIPO EXCLUSIVO SPA)
+        ========================================== -->
+        <section id="view-equipo" class="view-section pt-32 pb-24 relative">
+            <div class="max-w-7xl mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Directiva</h3>
+                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Profesionales de Élite</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Carlos -->
+                    <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
+                        </div>
+                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                            <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
+                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
+                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
+                        </div>
+                    </div>
+                    <!-- Daniela -->
+                    <div onclick="openInfoModal('daniela')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/daniela.png" alt="Daniela" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
+                        </div>
+                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                            <h4 class="text-xl text-white font-serif font-bold">Abg. Daniela Ortega</h4>
+                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Derecho Penal</p>
+                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
+                        </div>
+                    </div>
+                    <!-- Luis Miguel -->
+                    <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
+                        </div>
+                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                            <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
+                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Constitucional</p>
+                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
+                        </div>
+                    </div>
+                    <!-- Viviana -->
+                    <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
+                        </div>
+                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                            <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
+                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
+                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
              VISTA 3: SERVICIOS
         ========================================== -->
         <section id="view-servicios" class="view-section pt-32 pb-24 relative">
@@ -450,87 +521,93 @@
                 <div class="text-center mb-16">
                     <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Áreas de Práctica</h3>
                     <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold mb-6">Soluciones para su tranquilidad</h2>
-                    <p class="text-slate-300 font-light text-lg max-w-3xl mx-auto">El camino más rápido, seguro y económico para resolver sus conflictos, con la confidencialidad y elegancia que requiere.</p>
+                    <p class="text-slate-300 font-light text-lg max-w-3xl mx-auto">Conozca a detalle nuestras especialidades haciendo clic sobre cada una de ellas.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Civil -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('civil')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800" alt="Civil" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <!-- Efecto Glass Hover -->
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <!-- Efecto Hover -->
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-scale-balanced absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Civil y Notarial</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Cobro de letras de cambio, contratos, desalojos, escrituras, poderes, juicios en documentos y declaraciones juramentadas.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Civil y Notarial</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Cobro de letras de cambio, contratos, desalojos, escrituras, poderes, juicios en documentos y declaraciones juramentadas.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                     <!-- Penal -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('penal')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=800" alt="Penal" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-shield-halved absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Defensa Penal</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Representación jurídica integral, defensa técnica estratégica, apelaciones, procedimientos de protección y formulación de denuncias.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Defensa Penal</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Representación jurídica integral, defensa técnica estratégica, apelaciones, procedimientos de protección y formulación de denuncias.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                     <!-- Tránsito -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('transito')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800" alt="Tránsito" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-car absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Tránsito</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Juicios y mediación de accidentes de tránsito, impugnación de citaciones, liberación de vehículos y recuperación de puntos.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Tránsito</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Juicios y mediación de accidentes de tránsito, impugnación de citaciones, liberación de vehículos y recuperación de puntos.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                     <!-- Familia -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('familia')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800" alt="Familia" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-users absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Familia</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Regulación de pensiones alimenticias, régimen de visitas, juicios de divorcio y procesos integrales de mediación familiar.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Familia</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Regulación de pensiones alimenticias, régimen de visitas, juicios de divorcio y procesos integrales de mediación familiar.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                     <!-- Laboral -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('laboral')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800" alt="Laboral" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-briefcase absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Laboral y Tributario</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Defensa de derechos laborales, controversias tributarias, conciliaciones y elaboración de reglamentos de orden interno.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Laboral y Tributario</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Defensa de derechos laborales, controversias tributarias, conciliaciones y elaboración de reglamentos de orden interno.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                     <!-- Mediación -->
-                    <div class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col">
+                    <div onclick="openInfoModal('mediacion')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
                         <div class="h-48 relative overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800" alt="Mediación" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
                             <i class="fa-solid fa-handshake absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
                         </div>
                         <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4">Mediación Certificada</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed">Evite años de juicios y altos costos. La mediación es una solución rápida, económica y confidencial para construir un acuerdo mutuo.</p>
+                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Mediación Certificada</h4>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Evite años de juicios y altos costos. La mediación es una solución rápida, económica y confidencial para construir un acuerdo mutuo.</p>
+                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
                         </div>
                     </div>
                 </div>
@@ -553,10 +630,10 @@
                         <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-tv mr-2"></i> Opinión Experta</h3>
                         <h4 class="text-3xl text-silver font-serif font-bold mb-6">CIMAJ en Medios</h4>
                         <p class="text-slate-300 font-light mb-6">Nuestro equipo es frecuentemente consultado por medios nacionales para brindar análisis jurídico sobre temas de coyuntura y seguridad.</p>
-                        <div class="rounded-xl overflow-hidden border border-white/10 relative group">
+                        <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_20px_rgba(0,0,0,0.5)]">
                             <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg" alt="Entrevista" class="w-full h-56 object-cover transition-all duration-700">
-                            <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-sm transition-all duration-500 z-10 pointer-events-none"></div>
-                            <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors z-20">
+                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                            <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="absolute inset-0 bg-[#0b0c10]/40 flex items-center justify-center group-hover:bg-[#0b0c10]/60 transition-colors z-20">
                                 <i class="fa-regular fa-circle-play text-6xl text-[#C5A059] drop-shadow-[0_0_15px_rgba(197,160,89,0.6)] group-hover:scale-110 transition-transform"></i>
                             </a>
                         </div>
@@ -583,12 +660,15 @@
                     </div>
                 </div>
 
-                <!-- Videos TikTok -->
+                <!-- Videos TikTok con Vistas Previas Fotográficas (Miniaturas Reales) -->
                 <h3 class="text-silver font-serif text-2xl font-bold mb-8 border-b border-white/10 pb-4">Consejos y Contenido Digital</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <a href="https://vt.tiktok.com/ZSxPJ4G3A/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <div class="relative aspect-[9/16] bg-[#050608] flex flex-col items-center justify-center">
-                            <i class="fa-brands fa-tiktok text-6xl text-white/20 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
+                        <!-- Vista Previa de Video (Fondo corporativo) -->
+                        <div class="relative aspect-[9/16] bg-[url('https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg')] bg-cover bg-center flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
+                            
+                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
                             <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
                                 <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
                             </div>
@@ -597,9 +677,13 @@
                             <span class="text-slate-300 font-medium text-sm">Video Corporativo 1</span>
                         </div>
                     </a>
+                    
                     <a href="https://vt.tiktok.com/ZSxPeJrpX/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <div class="relative aspect-[9/16] bg-[#050608] flex flex-col items-center justify-center">
-                            <i class="fa-brands fa-tiktok text-6xl text-white/20 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
+                        <!-- Vista Previa de Video -->
+                        <div class="relative aspect-[9/16] bg-[url('https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/comite.jpg')] bg-cover bg-center flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
+                            
+                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
                             <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
                                 <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
                             </div>
@@ -608,9 +692,13 @@
                             <span class="text-slate-300 font-medium text-sm">Video Corporativo 2</span>
                         </div>
                     </a>
+                    
                     <a href="https://vt.tiktok.com/ZSxPeA5gR/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <div class="relative aspect-[9/16] bg-[#050608] flex flex-col items-center justify-center">
-                            <i class="fa-brands fa-tiktok text-6xl text-white/20 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
+                        <!-- Vista Previa de Video -->
+                        <div class="relative aspect-[9/16] bg-[url('https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/equipo.jpg')] bg-cover bg-center flex flex-col items-center justify-center">
+                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
+                            
+                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
                             <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
                                 <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
                             </div>
@@ -639,9 +727,9 @@
                     <div class="w-full md:w-2/5 relative rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-[0_0_40px_rgba(197,160,89,0.15)] group bg-[#050608]">
                         <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/Cover%20Page.png" alt="Portada Revista CIMAJ" class="w-full h-auto aspect-[3/4] object-contain transition-transform duration-700 group-hover:scale-105">
                         
-                        <!-- Efectos sobre la portada -->
+                        <!-- Efectos sobre la portada sin blur -->
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/20 to-transparent opacity-90"></div>
-                        <div class="absolute inset-0 bg-white/0 backdrop-blur-[0px] group-hover:bg-white/10 group-hover:backdrop-blur-[2px] transition-all duration-500"></div>
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500"></div>
                         
                         <div class="absolute bottom-8 left-0 w-full text-center z-20">
                             <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" class="h-10 mx-auto mb-3 opacity-90">
@@ -695,15 +783,37 @@
         </div>
     </footer>
 
+    <!-- ==========================================
+         MODAL DE INFORMACIÓN (SERVICIOS Y ABOGADOS)
+    ========================================== -->
+    <div id="info-modal" class="fixed inset-0 z-[999] bg-[#0b0c10]/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col slideDown border border-white/10">
+            <div class="flex justify-between items-center p-6 border-b border-white/10 bg-[#050608]">
+                <div>
+                    <h3 id="info-modal-title" class="text-silver font-serif font-bold text-2xl">Título</h3>
+                    <p id="info-modal-subtitle" class="text-[#C5A059] text-xs uppercase tracking-widest font-bold mt-1">Subtítulo</p>
+                </div>
+                <button onclick="closeInfoModal()" class="text-slate-400 hover:text-[#C5A059] transition-colors"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            </div>
+            <div class="p-8 bg-[#0b0c10] text-slate-300 font-light leading-relaxed max-h-[60vh] overflow-y-auto" id="info-modal-desc">
+                <!-- El contenido se inyectará por JS -->
+            </div>
+            <div class="p-6 bg-[#050608] border-t border-white/10 flex justify-end">
+                <a href="https://wa.me/593998877398" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform">
+                    Consultar Caso <i class="fa-brands fa-whatsapp ml-2 text-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL DE MAPA EXPANDIDO -->
     <div id="map-modal" class="fixed inset-0 z-[999] bg-[#0b0c10]/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all">
-        <div class="glass-panel w-full max-w-5xl h-[80vh] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col slide-up border border-white/10">
+        <div class="glass-panel w-full max-w-5xl h-[80vh] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col border border-white/10">
             <div class="flex justify-between items-center p-4 border-b border-white/10 bg-[#050608]">
                 <h3 class="text-silver font-serif font-bold text-lg"><i class="fa-solid fa-location-dot text-[#C5A059] mr-2"></i> Ubicación CIMAJ</h3>
                 <button onclick="cerrarMapa()" class="text-slate-400 hover:text-[#C5A059] transition-colors"><i class="fa-solid fa-xmark text-2xl"></i></button>
             </div>
-            <!-- Mapa Funcional -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7915309624536!2d-78.4844356!3d-0.1764614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ea293c6df%3A0x2a9a5c40bc835567!2sEdificio%20Aristo%20Plaza!5e0!3m2!1ses!2sec!4v1716440000000!5m2!1ses!2sec" class="w-full flex-grow border-0" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7915309624536!2d-78.4844356!3d-0.1764614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ea293c6df%3A0x2a9a5c40bc835567!2sEdificio%20Aristo%20Plaza!5e0!3m2!1ses!2sec!4v1716440000000!5m2!1ses!2sec" class="w-full flex-grow border-0 grayscale opacity-90" allowfullscreen="" loading="lazy"></iframe>
             <div class="p-4 bg-[#050608] border-t border-white/10 flex justify-end">
                 <a href="https://maps.app.goo.gl/tWjof7yB6V5K95Hj9" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform">
                     Abrir en Google Maps <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
@@ -714,6 +824,82 @@
 
     <!-- SCRIPTS CONTROLADORES -->
     <script>
+        // === DATOS PARA LOS MODALES DE INFORMACIÓN ===
+        const modalData = {
+            'carlos': {
+                title: 'Dr. Carlos Cisneros V.',
+                subtitle: 'CEO & Director Jurídico',
+                desc: '<p class="mb-4 text-white">Especialista en investigación criminalística y estrategia penal con más de 15 años de trayectoria. Su enfoque combina la rigurosidad analítica con un liderazgo directivo excepcional.</p><p>Como fundador de CIMAJ, ha establecido un estándar de excelencia en la defensa técnica, logrando resultados determinantes en casos de alta complejidad a nivel nacional, siempre manteniendo un trato humano y cercano con cada cliente.</p>'
+            },
+            'daniela': {
+                title: 'Abg. Daniela Ortega',
+                subtitle: 'Derecho Penal y Conexas',
+                desc: '<p class="mb-4 text-white">Abogada especialista en Derecho Penal con una experiencia destacada en litigios complejos y audiencias de alto perfil.</p><p>Ha logrado resultados altamente favorables en casos de relevancia nacional, destacándose por su meticulosa preparación argumentativa, su capacidad analítica en la revisión de expedientes y su contundencia en los tribunales.</p>'
+            },
+            'luis': {
+                title: 'Abg. Luis Miguel Oña',
+                subtitle: 'Garantías Constitucionales',
+                desc: '<p class="mb-4 text-white">Experto en Garantías Constitucionales y Derecho Público. Cuenta con una valiosa trayectoria como ex-colaborador de la Asamblea Nacional.</p><p>Ha participado activamente en la elaboración de proyectos de ley y procesos de fiscalización, lo que le otorga una comprensión profunda de la estructura gubernamental y la defensa de los derechos constitucionales de nuestros clientes.</p>'
+            },
+            'vivi': {
+                title: 'Viviana Echeverría',
+                subtitle: 'Mediadora Certificada',
+                desc: '<p class="mb-4 text-white">Mediadora debidamente acreditada por el Consejo de la Judicatura (CNJ). Es especialista en la resolución alternativa de conflictos.</p><p>Su labor es fundamental en CIMAJ para evitar años de juicios y altos costos a nuestros clientes. A través del diálogo, la empatía y la neutralidad, facilita la construcción de acuerdos mutuos con plena validez legal, garantizando soluciones rápidas y confidenciales.</p>'
+            },
+            'civil': {
+                title: 'Civil y Notarial',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">Nuestra área Civil y Notarial se encarga de proteger su patrimonio y asegurar la validez de todos sus actos legales. Nos especializamos en brindar soluciones efectivas frente a conflictos entre particulares.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Cobro ágil de letras de cambio, pagarés y letras de crédito.</li><li>Redacción, revisión y legalización de contratos.</li><li>Procesos de desalojos y recuperación de inmuebles.</li><li>Trámites de escrituras, otorgamiento de poderes y declaraciones juramentadas.</li><li>Juicios en documentos y ejecución de deudas.</li></ul>'
+            },
+            'penal': {
+                title: 'Defensa Penal',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">Contamos con un equipo de élite para la representación jurídica en materia penal. Entendemos que su libertad y honor están en juego, por lo que actuamos con inmediatez y contundencia.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Representación jurídica integral para víctimas y procesados.</li><li>Defensa técnica estratégica basada en investigación criminalística.</li><li>Presentación de apelaciones y recursos de casación o revisión.</li><li>Procedimientos de protección de derechos.</li><li>Elaboración, presentación y seguimiento de denuncias.</li></ul>'
+            },
+            'transito': {
+                title: 'Tránsito',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">Brindamos asistencia legal inmediata y especializada ante cualquier siniestro o conflicto vial, buscando siempre proteger su libertad, su historial de conducción y su patrimonio.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Defensa en juicios por accidentes de tránsito (daños materiales, lesiones o fatalidades).</li><li>Mediación extrajudicial para reparación de daños.</li><li>Impugnación de citaciones y multas de tránsito.</li><li>Trámites para la liberación rápida de vehículos retenidos.</li><li>Procesos administrativos para la recuperación de puntos de licencia.</li></ul>'
+            },
+            'familia': {
+                title: 'Familia',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">Tratamos los asuntos del núcleo familiar con la máxima sensibilidad, confidencialidad y rigor jurídico, priorizando siempre el bienestar de los menores y la paz familiar.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Fijación, aumento, rebaja y cobro de pensiones alimenticias.</li><li>Establecimiento y regulación de régimen de visitas y tenencia.</li><li>Juicios de divorcio por mutuo consentimiento y contenciosos.</li><li>Liquidación de sociedad conyugal.</li><li>Procesos integrales de mediación familiar para acuerdos amigables.</li></ul>'
+            },
+            'laboral': {
+                title: 'Laboral y Tributario',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">Asesoramos tanto a empleadores como a trabajadores para asegurar el cumplimiento de la ley, prevenir conflictos y resolver disputas con las instituciones reguladoras.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Defensa de derechos laborales (despidos intempestivos, vistos buenos, liquidaciones).</li><li>Asesoría y defensa en controversias tributarias ante el SRI.</li><li>Representación en procesos de conciliación y arbitraje.</li><li>Elaboración de contratos laborales y auditorías de cumplimiento.</li><li>Redacción y aprobación de reglamentos de orden interno empresarial.</li></ul>'
+            },
+            'mediacion': {
+                title: 'Mediación Certificada',
+                subtitle: 'Especialidad',
+                desc: '<p class="mb-4 text-white">La mediación es la vía del futuro. Le permite evitar años de desgaste emocional y altos costos judiciales mediante un proceso de diálogo asistido por nuestros profesionales avalados por el Consejo de la Judicatura.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li><strong class="text-[#C5A059]">Rapidez:</strong> Soluciones en semanas, no en años.</li><li><strong class="text-[#C5A059]">Economía:</strong> Significativamente más accesible que un juicio tradicional.</li><li><strong class="text-[#C5A059]">Confidencialidad absoluta:</strong> Lo tratado en mediación no es público ni puede ser usado en su contra.</li><li><strong class="text-[#C5A059]">Fuerza de Sentencia:</strong> El acta de mediación tiene la misma validez legal que una sentencia de un juez en última instancia.</li></ul>'
+            }
+        };
+
+        // Lógica de Modales de Información
+        function openInfoModal(id) {
+            const data = modalData[id];
+            if(!data) return;
+            
+            document.getElementById('info-modal-title').innerText = data.title;
+            document.getElementById('info-modal-subtitle').innerText = data.subtitle;
+            document.getElementById('info-modal-desc').innerHTML = data.desc;
+            
+            const modal = document.getElementById('info-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('info-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
         // Lógica del Carrusel del Hero
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
@@ -754,15 +940,12 @@
 
         // Navegación estilo SPA (Pestañas Ocultas)
         function navigate(viewId) {
-            // Ocultar todas las secciones
             document.querySelectorAll('.view-section').forEach(section => {
                 section.classList.remove('view-active');
             });
             
-            // Mostrar la sección seleccionada
             document.getElementById('view-' + viewId).classList.add('view-active');
             
-            // Actualizar color de los botones en Desktop
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if(btn.dataset.target === viewId) {
                     btn.classList.add('text-[#C5A059]');
@@ -773,7 +956,6 @@
                 }
             });
 
-            // Cerrar menú móvil si está abierto
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('mobile-icon');
             if (!menu.classList.contains('translate-x-full')) {
@@ -782,7 +964,6 @@
                 icon.classList.add('fa-bars');
             }
 
-            // Subir el scroll al inicio suavemente
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
