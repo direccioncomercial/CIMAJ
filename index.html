@@ -615,23 +615,25 @@
         </section>
 
         <!-- ==========================================
-             VISTA 4: MULTIMEDIA Y MAPA
+             VISTA 4: MULTIMEDIA (Sin Mapa)
         ========================================== -->
         <section id="view-multimedia" class="view-section pt-32 pb-24 relative">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-16">
                     <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Nuestra Presencia</h3>
-                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Medios, Videos y Ubicación</h2>
+                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Medios y Multimedia</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
                     <!-- Opinión Experta -->
-                    <div class="glass-panel p-8 md:p-12 rounded-3xl">
-                        <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-tv mr-2"></i> Opinión Experta</h3>
-                        <h4 class="text-3xl text-silver font-serif font-bold mb-6">CIMAJ en Medios</h4>
-                        <p class="text-slate-300 font-light mb-6">Nuestro equipo es frecuentemente consultado por medios nacionales para brindar análisis jurídico sobre temas de coyuntura y seguridad.</p>
-                        <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg" alt="Entrevista" class="w-full h-56 object-cover transition-all duration-700">
+                    <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-tv mr-2"></i> Opinión Experta</h3>
+                            <h4 class="text-3xl text-silver font-serif font-bold mb-6">CIMAJ en Medios</h4>
+                            <p class="text-slate-300 font-light mb-6">Nuestro equipo es frecuentemente consultado por medios nacionales para brindar análisis jurídico sobre temas de coyuntura y seguridad.</p>
+                        </div>
+                        <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_20px_rgba(0,0,0,0.5)] h-56">
+                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg" alt="Entrevista" class="w-full h-full object-cover transition-all duration-700">
                             <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
                             <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="absolute inset-0 bg-[#0b0c10]/40 flex items-center justify-center group-hover:bg-[#0b0c10]/60 transition-colors z-20">
                                 <i class="fa-regular fa-circle-play text-6xl text-[#C5A059] drop-shadow-[0_0_15px_rgba(197,160,89,0.6)] group-hover:scale-110 transition-transform"></i>
@@ -639,28 +641,31 @@
                         </div>
                     </div>
 
-                    <!-- Ubicación Estratégica -->
+                    <!-- Redes Sociales (Reemplazo de Ubicación) -->
                     <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between">
                         <div>
-                            <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-map-location-dot mr-2"></i> Ubicación</h3>
-                            <h4 class="text-3xl text-silver font-serif font-bold mb-4">Oficina Principal</h4>
-                            <p class="text-slate-300 font-light mb-6">José Arizaga y Jorge Drom, Edificio Aristo Plaza, Quito.</p>
+                            <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-hashtag mr-2"></i> Comunidad</h3>
+                            <h4 class="text-3xl text-silver font-serif font-bold mb-4">Síguenos en Redes</h4>
+                            <p class="text-slate-300 font-light mb-8">Únase a nuestra comunidad digital para recibir consejos legales, actualizaciones normativas y conocer más de cerca nuestro trabajo diario.</p>
                         </div>
-                        <div onclick="abrirMapa()" class="relative w-full h-56 rounded-xl overflow-hidden border border-white/10 cursor-pointer group shadow-lg">
-                            <div class="absolute inset-0 pointer-events-none transition-all duration-700">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7915309624536!2d-78.4844356!3d-0.1764614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ea293c6df%3A0x2a9a5c40bc835567!2sEdificio%20Aristo%20Plaza!5e0!3m2!1ses!2sec!4v1716440000000!5m2!1ses!2sec" class="w-full h-full" style="border:0;" loading="lazy"></iframe>
-                            </div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-40"></div>
-                            <!-- Botón de apertura -->
-                            <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center bg-[#0b0c10]/80 backdrop-blur-md px-4 py-3 rounded-lg border border-white/10 group-hover:border-[#C5A059]/50 transition-colors">
-                                <span class="text-white font-bold text-sm tracking-widest uppercase">Ver Mapa Interactivo</span>
-                                <i class="fa-solid fa-expand text-[#C5A059] text-xl"></i>
-                            </div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
+                                <i class="fa-brands fa-facebook-f text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
+                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">Facebook</span>
+                            </a>
+                            <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
+                                <i class="fa-brands fa-instagram text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
+                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">Instagram</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
+                                <i class="fa-brands fa-tiktok text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
+                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">TikTok</span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Videos TikTok con Vistas Previas de Servicios (Sin foto blanco y negro ni fondo oscuro opaco) -->
+                <!-- Videos TikTok con Títulos Formales -->
                 <h3 class="text-silver font-serif text-2xl font-bold mb-8 border-b border-white/10 pb-4">Consejos y Contenido Digital</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <a href="https://vt.tiktok.com/ZSxPJ4G3A/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
@@ -674,7 +679,7 @@
                             </div>
                         </div>
                         <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Video Corporativo 1</span>
+                            <span class="text-slate-300 font-medium text-sm">Asesoría Legal Estratégica</span>
                         </div>
                     </a>
                     
@@ -689,7 +694,7 @@
                             </div>
                         </div>
                         <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Video Corporativo 2</span>
+                            <span class="text-slate-300 font-medium text-sm">Importancia de la Mediación</span>
                         </div>
                     </a>
                     
@@ -704,7 +709,7 @@
                             </div>
                         </div>
                         <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Video Corporativo 3</span>
+                            <span class="text-slate-300 font-medium text-sm">Defensa Jurídica Integral</span>
                         </div>
                     </a>
                 </div>
@@ -767,14 +772,19 @@
                 <div>
                     <h4 class="text-silver font-serif font-bold mb-4">Contacto</h4>
                     <ul class="space-y-3 text-sm text-slate-400">
-                        <li><i class="fa-solid fa-phone text-[#C5A059] w-5"></i> <a href="tel:0998877398" class="hover:text-[#Fdf5a6] transition-colors">099 887 7398</a></li>
-                        <li><i class="fa-brands fa-whatsapp text-[#C5A059] w-5"></i> <a href="tel:0999367562" class="hover:text-[#Fdf5a6] transition-colors">Call Center: 099 936 7562</a></li>
+                        <li><i class="fa-brands fa-whatsapp text-[#C5A059] w-5"></i> <a href="https://wa.me/593998877398" target="_blank" class="hover:text-[#Fdf5a6] transition-colors">099 887 7398</a></li>
                         <li><i class="fa-solid fa-envelope text-[#C5A059] w-5"></i> <a href="mailto:cimaj.ecuador2025@hotmail.com" class="hover:text-[#Fdf5a6] transition-colors">cimaj.ecuador2025@hotmail.com</a></li>
                     </ul>
                 </div>
+                <!-- Reemplazo de Ubicación por Redes en Footer -->
                 <div>
-                    <h4 class="text-silver font-serif font-bold mb-4">Ubicación</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed"><i class="fa-solid fa-location-dot text-[#C5A059] w-5"></i> Edificio Aristo Plaza, José Arizaga y Jorge Drom, Quito, Ecuador.</p>
+                    <h4 class="text-silver font-serif font-bold mb-4">Síguenos</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">Únase a nuestra comunidad digital para recibir contenido de valor jurídico.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-facebook-f text-lg w-5 text-center"></i></a>
+                        <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-instagram text-lg w-5 text-center"></i></a>
+                        <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-tiktok text-lg w-5 text-center"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="border-t border-white/5 pt-8 flex justify-between text-xs text-slate-500">
@@ -812,22 +822,6 @@
                         Consultar Caso <i class="fa-brands fa-whatsapp ml-2 text-lg"></i>
                     </a>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE MAPA EXPANDIDO -->
-    <div id="map-modal" class="fixed inset-0 z-[999] bg-[#0b0c10]/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all">
-        <div class="glass-panel w-full max-w-5xl h-[80vh] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col border border-white/10">
-            <div class="flex justify-between items-center p-4 border-b border-white/10 bg-[#050608]">
-                <h3 class="text-silver font-serif font-bold text-lg"><i class="fa-solid fa-location-dot text-[#C5A059] mr-2"></i> Ubicación CIMAJ</h3>
-                <button onclick="cerrarMapa()" class="text-slate-400 hover:text-[#C5A059] transition-colors"><i class="fa-solid fa-xmark text-2xl"></i></button>
-            </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7915309624536!2d-78.4844356!3d-0.1764614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a7ea293c6df%3A0x2a9a5c40bc835567!2sEdificio%20Aristo%20Plaza!5e0!3m2!1ses!2sec!4v1716440000000!5m2!1ses!2sec" class="w-full flex-grow border-0 grayscale opacity-90" allowfullscreen="" loading="lazy"></iframe>
-            <div class="p-4 bg-[#050608] border-t border-white/10 flex justify-end">
-                <a href="https://maps.app.goo.gl/tWjof7yB6V5K95Hj9" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform">
-                    Abrir en Google Maps <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
-                </a>
             </div>
         </div>
     </div>
@@ -986,20 +980,6 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Control Modal Mapa
-        function abrirMapa() {
-            const modal = document.getElementById('map-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-        function cerrarMapa() {
-            const modal = document.getElementById('map-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
         }
 
         // Menú Hamburguesa Móvil
