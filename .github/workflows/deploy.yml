@@ -20,3 +20,4 @@ jobs:
           username: if0_40923956
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /cimaj.gt.tc/htdocs/
+          protocol: ftps
