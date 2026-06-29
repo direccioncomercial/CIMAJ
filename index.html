@@ -922,14 +922,17 @@
         }
 
         // Navegación estilo SPA (Pestañas Ocultas)
+        const viewSections = document.querySelectorAll('.view-section');
+        const navBtns = document.querySelectorAll('.nav-btn');
+
         function navigate(viewId) {
-            document.querySelectorAll('.view-section').forEach(section => {
+            viewSections.forEach(section => {
                 section.classList.remove('view-active');
             });
             
             document.getElementById('view-' + viewId).classList.add('view-active');
             
-            document.querySelectorAll('.nav-btn').forEach(btn => {
+            navBtns.forEach(btn => {
                 if(btn.dataset.target === viewId) {
                     btn.classList.add('text-[#C5A059]');
                     btn.classList.remove('text-slate-300');
