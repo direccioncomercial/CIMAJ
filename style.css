@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  /* Fondo Obscuro con profundidad */
+  background: radial-gradient(
+    circle at 50% 0%,
+    #1a1e29 0%,
+    #0b0c10 50%,
+    #050608 100%
+  );
+  background-attachment: fixed;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.font-serif {
+  font-family: "Cinzel", serif;
+}
+
+/* === DEGRADADOS METÁLICOS PREMIUM === */
+.text-silver {
+  background: linear-gradient(135deg, #f8f9fa 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold {
+  background: linear-gradient(to right, #c5a059, #fdf5a6, #c5a059);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #c5a059 0%, #fdf5a6 50%, #b28838 100%);
+}
+
+/* === SISTEMA DE VISTAS INDEPENDIENTES (SPA) === */
+.view-section {
+  display: none;
+  opacity: 0;
+  animation: fadeInView 0.6s ease-in-out forwards;
+}
+.view-active {
+  display: block;
+}
+
+@keyframes fadeInView {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === ANIMACIONES DEL CARRUSEL === */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(30px) scale(1.02);
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.carousel-slide.exit {
+  opacity: 0;
+  transform: translateX(-30px) scale(0.98);
+}
+
+/* DROPDOWNS MEJORADOS */
+.dropdown-group:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+/* Efectos de Cristal */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050608;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a059;
+  border-radius: 4px;
+}
