@@ -975,19 +975,15 @@
                 header.classList.add('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
                 header.classList.remove('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
                 if(topbar) {
-                    topbar.style.height = '0px';
-                    topbar.style.opacity = '0';
-                    topbar.style.paddingBottom = '0px';
-                    topbar.style.marginBottom = '0px';
+                    topbar.classList.remove('h-auto', 'opacity-100', 'pb-2', 'mb-2');
+                    topbar.classList.add('h-0', 'opacity-0', 'pb-0', 'mb-0', 'overflow-hidden');
                 }
             } else {
                 header.classList.remove('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
                 header.classList.add('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
                 if(topbar) {
-                    topbar.style.height = 'auto';
-                    topbar.style.opacity = '1';
-                    topbar.style.paddingBottom = '0.5rem';
-                    topbar.style.marginBottom = '0.5rem';
+                    topbar.classList.remove('h-0', 'opacity-0', 'pb-0', 'mb-0', 'overflow-hidden');
+                    topbar.classList.add('h-auto', 'opacity-100', 'pb-2', 'mb-2');
                 }
             }
         });
