@@ -1,996 +1,1536 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CIMAJ | Corporación Legal y Financiera</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            /* Fondo Obscuro con profundidad */
-            background: radial-gradient(circle at 50% 0%, #1a1e29 0%, #0b0c10 50%, #050608 100%);
-            background-attachment: fixed;
-            color: #e2e8f0;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        
-        .font-serif { font-family: 'Cinzel', serif; }
-        
-        /* === DEGRADADOS METÁLICOS PREMIUM === */
-        .text-silver {
-            background: linear-gradient(135deg, #f8f9fa 0%, #cbd5e1 50%, #94a3b8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .text-gold {
-            background: linear-gradient(to right, #C5A059, #Fdf5a6, #C5A059);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .bg-gold-gradient {
-            background: linear-gradient(135deg, #C5A059 0%, #Fdf5a6 50%, #B28838 100%);
-        }
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-        /* === SISTEMA DE VISTAS INDEPENDIENTES (SPA) === */
-        .view-section { 
-            display: none; 
-            opacity: 0;
-            animation: fadeInView 0.6s ease-in-out forwards;
-        }
-        .view-active { 
-            display: block; 
-        }
-
-        @keyframes fadeInView {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* === ANIMACIONES DEL CARRUSEL === */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transform: translateX(30px) scale(1.02);
-            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        .carousel-slide.active {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            z-index: 10;
-            pointer-events: auto;
-        }
-
-        .carousel-slide.exit {
-            opacity: 0;
-            transform: translateX(-30px) scale(0.98);
-        }
-
-        /* DROPDOWNS MEJORADOS */
-        .dropdown-group:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        .dropdown-menu::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-        }
-
-        /* Efectos de Cristal */
-        .glass-panel {
-            background: rgba(17, 24, 39, 0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-
-        /* Scrollbars */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050608; }
-        ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 4px; }
-    </style>
-</head>
-<body class="selection:bg-[#C5A059] selection:text-[#0b0c10] flex flex-col">
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="selection:bg-[#C5A059] selection:text-[#0b0c10] flex flex-col">
     <!-- ==========================================
          BOTÓN FLOTANTE WHATSAPP (DERECHA)
     ========================================== -->
-    <a href="https://wa.me/593998877398" target="_blank" class="fixed bottom-8 right-6 z-[100] glass-panel border border-[#C5A059]/40 rounded-full px-5 py-3 flex items-center space-x-3 hover:scale-105 hover:border-[#C5A059] transition-all duration-300 shadow-[0_0_20px_rgba(197,160,89,0.2)] hover:shadow-[0_0_30px_rgba(197,160,89,0.5)] group">
-        <span class="text-white font-bold text-xs uppercase tracking-widest pl-2 group-hover:text-[#Fdf5a6] transition-colors">Contáctanos</span>
-        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20V%20Blanco.png" alt="CIMAJ Logo Vertical" class="h-8 w-auto group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" />
+    <a
+      href="https://wa.me/593998877398"
+      target="_blank"
+      class="fixed bottom-8 right-6 z-[100] glass-panel border border-[#C5A059]/40 rounded-full px-5 py-3 flex items-center space-x-3 hover:scale-105 hover:border-[#C5A059] transition-all duration-300 shadow-[0_0_20px_rgba(197,160,89,0.2)] hover:shadow-[0_0_30px_rgba(197,160,89,0.5)] group"
+    >
+      <span
+        class="text-white font-bold text-xs uppercase tracking-widest pl-2 group-hover:text-[#Fdf5a6] transition-colors"
+        >Contáctanos</span
+      >
+      <img
+        src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20V%20Blanco.png"
+        alt="CIMAJ Logo Vertical"
+        class="h-8 w-auto group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300"
+      />
     </a>
 
     <!-- ==========================================
          HEADER / NAVBAR
     ========================================== -->
-    <header id="main-header" class="fixed w-full top-0 z-50 transition-all duration-500 bg-gradient-to-b from-[#0b0c10] to-transparent py-2">
-        <div id="topbar" class="hidden lg:flex max-w-7xl mx-auto px-4 justify-between items-center text-xs text-slate-400 border-b border-white/10 pb-2 mb-2 transition-all duration-300">
-            <!-- Izquierda: Solo Email para limpieza visual -->
-            <div class="flex space-x-6">
-                <a href="mailto:cimaj.ecuador2025@hotmail.com" class="flex items-center hover:text-[#Fdf5a6] transition-colors"><i class="fa-solid fa-envelope mr-2 text-[#C5A059]"></i> cimaj.ecuador2025@hotmail.com</a>
-            </div>
-            <!-- Derecha: Redes Sociales -->
-            <div class="flex space-x-4 items-center">
-                <span class="uppercase tracking-widest font-bold">Síguenos:</span>
-                <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="hover:text-[#C5A059] transition-colors text-base"><i class="fa-brands fa-tiktok"></i></a>
-            </div>
+    <header
+      id="main-header"
+      class="fixed w-full top-0 z-50 transition-all duration-500 bg-gradient-to-b from-[#0b0c10] to-transparent py-2"
+    >
+      <div
+        id="topbar"
+        class="hidden lg:flex max-w-7xl mx-auto px-4 justify-between items-center text-xs text-slate-400 border-b border-white/10 pb-2 mb-2 transition-all duration-300"
+      >
+        <!-- Izquierda: Solo Email para limpieza visual -->
+        <div class="flex space-x-6">
+          <a
+            href="mailto:cimaj.ecuador2025@hotmail.com"
+            class="flex items-center hover:text-[#Fdf5a6] transition-colors"
+            ><i class="fa-solid fa-envelope mr-2 text-[#C5A059]"></i>
+            cimaj.ecuador2025@hotmail.com</a
+          >
         </div>
-
-        <nav class="max-w-7xl mx-auto px-4 relative">
-            <div class="flex justify-between h-24 md:h-28 items-center">
-                <!-- Logo -->
-                <a href="javascript:void(0)" onclick="navigate('home')" class="flex-shrink-0 flex items-center cursor-pointer group z-50">
-                    <img class="h-16 md:h-24 w-auto transition-transform group-hover:scale-105" src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" alt="CIMAJ Logo" />
-                </a>
-                
-                <!-- Menú Desktop -->
-                <div class="hidden lg:flex space-x-8 items-center">
-                    <button onclick="navigate('home')" class="nav-btn text-sm uppercase tracking-widest font-bold text-[#C5A059] transition-colors" data-target="home">Inicio</button>
-                    
-                    <div class="relative dropdown-group py-6">
-                        <button class="flex items-center text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors cursor-pointer">
-                            La Corporación <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                        </button>
-                        <div class="dropdown-menu absolute left-0 top-[70px] w-56 glass-panel py-2 rounded-xl opacity-0 invisible translate-y-4 transition-all duration-300 pointer-events-none">
-                            <button onclick="navigate('historia')" class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all">Nuestra Historia</button>
-                            <button onclick="navigate('equipo')" class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all">Directiva</button>
-                        </div>
-                    </div>
-
-                    <button onclick="navigate('servicios')" class="nav-btn text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors" data-target="servicios">Servicios</button>
-                    
-                    <div class="relative dropdown-group py-6">
-                        <button class="flex items-center text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors cursor-pointer">
-                            Medios <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
-                        </button>
-                        <div class="dropdown-menu absolute left-0 top-[70px] w-64 glass-panel py-2 rounded-xl opacity-0 invisible translate-y-4 transition-all duration-300 pointer-events-none">
-                            <button onclick="navigate('revista')" class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all flex items-center"><i class="fa-solid fa-file-pdf mr-3 text-[#C5A059]"></i> Revista Oficial</button>
-                            <button onclick="navigate('multimedia')" class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all flex items-center"><i class="fa-regular fa-circle-play mr-3 text-[#C5A059]"></i> Entrevistas y Videos</button>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/593998877398" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full transition-all duration-300 text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:scale-105">
-                        Agendar Cita
-                    </a>
-                </div>
-
-                <!-- Botón Menú Hamburguesa Móvil -->
-                <div class="lg:hidden flex items-center z-50">
-                    <button onclick="toggleMobileMenu()" class="text-[#C5A059] p-2 glass-panel rounded-lg">
-                        <i id="mobile-icon" class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- PANEL LATERAL MÓVIL -->
-        <div id="mobile-menu" class="fixed inset-y-0 right-0 w-4/5 max-w-sm glass-panel border-l border-white/10 shadow-2xl z-40 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col pt-24 pb-6 px-6 bg-[#0b0c10]/95">
-            <div class="flex-grow space-y-2 overflow-y-auto">
-                <button onclick="navigate('home')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Inicio</button>
-                <button onclick="navigate('historia')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Nuestra Historia</button>
-                <button onclick="navigate('equipo')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Directiva</button>
-                <button onclick="navigate('servicios')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Servicios</button>
-                <button onclick="navigate('revista')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Revista Oficial</button>
-                <button onclick="navigate('multimedia')" class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]">Multimedia y Medios</button>
-            </div>
-            <div class="pt-6">
-                <a href="https://wa.me/593998877398" target="_blank" class="flex justify-center items-center w-full bg-gold-gradient text-[#0b0c10] px-6 py-4 rounded-xl font-bold uppercase text-xs tracking-widest">
-                    Agendar Cita
-                </a>
-            </div>
+        <!-- Derecha: Redes Sociales -->
+        <div class="flex space-x-4 items-center">
+          <span class="uppercase tracking-widest font-bold">Síguenos:</span>
+          <a
+            href="https://www.facebook.com/share/14gDs7LmGvP/"
+            target="_blank"
+            class="hover:text-[#C5A059] transition-colors text-base"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ=="
+            target="_blank"
+            class="hover:text-[#C5A059] transition-colors text-base"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR"
+            target="_blank"
+            class="hover:text-[#C5A059] transition-colors text-base"
+            ><i class="fa-brands fa-tiktok"></i
+          ></a>
         </div>
+      </div>
+
+      <nav class="max-w-7xl mx-auto px-4 relative">
+        <div class="flex justify-between h-24 md:h-28 items-center">
+          <!-- Logo -->
+          <a
+            href="javascript:void(0)"
+            onclick="navigate('home')"
+            class="flex-shrink-0 flex items-center cursor-pointer group z-50"
+          >
+            <img
+              class="h-16 md:h-24 w-auto transition-transform group-hover:scale-105"
+              src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png"
+              alt="CIMAJ Logo"
+            />
+          </a>
+
+          <!-- Menú Desktop -->
+          <div class="hidden lg:flex space-x-8 items-center">
+            <button
+              onclick="navigate('home')"
+              class="nav-btn text-sm uppercase tracking-widest font-bold text-[#C5A059] transition-colors"
+              data-target="home"
+            >
+              Inicio
+            </button>
+
+            <div class="relative dropdown-group py-6">
+              <button
+                class="flex items-center text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors cursor-pointer"
+              >
+                La Corporación
+                <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+              </button>
+              <div
+                class="dropdown-menu absolute left-0 top-[70px] w-56 glass-panel py-2 rounded-xl opacity-0 invisible translate-y-4 transition-all duration-300 pointer-events-none"
+              >
+                <button
+                  onclick="navigate('historia')"
+                  class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all"
+                >
+                  Nuestra Historia
+                </button>
+                <button
+                  onclick="navigate('equipo')"
+                  class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all"
+                >
+                  Directiva
+                </button>
+              </div>
+            </div>
+
+            <button
+              onclick="navigate('servicios')"
+              class="nav-btn text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors"
+              data-target="servicios"
+            >
+              Servicios
+            </button>
+
+            <div class="relative dropdown-group py-6">
+              <button
+                class="flex items-center text-sm uppercase tracking-widest font-bold text-slate-300 hover:text-[#Fdf5a6] transition-colors cursor-pointer"
+              >
+                Medios <i class="fa-solid fa-chevron-down ml-2 text-xs"></i>
+              </button>
+              <div
+                class="dropdown-menu absolute left-0 top-[70px] w-64 glass-panel py-2 rounded-xl opacity-0 invisible translate-y-4 transition-all duration-300 pointer-events-none"
+              >
+                <button
+                  onclick="navigate('revista')"
+                  class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all flex items-center"
+                >
+                  <i class="fa-solid fa-file-pdf mr-3 text-[#C5A059]"></i>
+                  Revista Oficial
+                </button>
+                <button
+                  onclick="navigate('multimedia')"
+                  class="w-full text-left px-6 py-3 text-sm text-slate-300 hover:text-[#C5A059] hover:bg-white/5 transition-all flex items-center"
+                >
+                  <i class="fa-regular fa-circle-play mr-3 text-[#C5A059]"></i>
+                  Entrevistas y Videos
+                </button>
+              </div>
+            </div>
+
+            <a
+              href="https://wa.me/593998877398"
+              target="_blank"
+              class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full transition-all duration-300 text-xs uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:scale-105"
+            >
+              Agendar Cita
+            </a>
+          </div>
+
+          <!-- Botón Menú Hamburguesa Móvil -->
+          <div class="lg:hidden flex items-center z-50">
+            <button
+              onclick="toggleMobileMenu()"
+              class="text-[#C5A059] p-2 glass-panel rounded-lg"
+            >
+              <i id="mobile-icon" class="fa-solid fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- PANEL LATERAL MÓVIL -->
+      <div
+        id="mobile-menu"
+        class="fixed inset-y-0 right-0 w-4/5 max-w-sm glass-panel border-l border-white/10 shadow-2xl z-40 transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col pt-24 pb-6 px-6 bg-[#0b0c10]/95"
+      >
+        <div class="flex-grow space-y-2 overflow-y-auto">
+          <button
+            onclick="navigate('home')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Inicio
+          </button>
+          <button
+            onclick="navigate('historia')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Nuestra Historia
+          </button>
+          <button
+            onclick="navigate('equipo')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Directiva
+          </button>
+          <button
+            onclick="navigate('servicios')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Servicios
+          </button>
+          <button
+            onclick="navigate('revista')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Revista Oficial
+          </button>
+          <button
+            onclick="navigate('multimedia')"
+            class="block w-full text-left px-4 py-4 text-slate-300 border-b border-white/10 uppercase text-xs tracking-widest font-bold hover:text-[#C5A059]"
+          >
+            Multimedia y Medios
+          </button>
+        </div>
+        <div class="pt-6">
+          <a
+            href="https://wa.me/593998877398"
+            target="_blank"
+            class="flex justify-center items-center w-full bg-gold-gradient text-[#0b0c10] px-6 py-4 rounded-xl font-bold uppercase text-xs tracking-widest"
+          >
+            Agendar Cita
+          </a>
+        </div>
+      </div>
     </header>
 
     <!-- ==========================================
          CONTENEDOR PRINCIPAL DE VISTAS (SPA)
     ========================================== -->
     <main class="flex-grow">
-
-        <!-- ==========================================
+      <!-- ==========================================
              VISTA 1: INICIO (CARRUSEL + ESTADÍSTICAS + EQUIPO)
         ========================================== -->
-        <section id="view-home" class="view-section view-active">
-            <!-- HERO CAROUSEL -->
-            <div class="relative h-screen carousel-container">
-                <!-- Slide 1 -->
-                <div class="carousel-slide active" id="slide-0">
-                    <div class="absolute inset-0">
-                        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/comite.jpg" alt="CIMAJ" class="w-full h-full object-cover object-[20%_center] opacity-60" />
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"></div>
-                    </div>
-                    <div class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20">
-                        <div class="max-w-3xl">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div class="h-[2px] w-12 bg-[#C5A059]"></div>
-                                <h2 class="text-gold text-sm uppercase tracking-[0.3em] font-bold">Corporación Legal y Financiera</h2>
-                            </div>
-                            <h1 class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8">
-                                La justicia con <br/><span class="text-silver">rostro humano.</span>
-                            </h1>
-                            <p class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6">
-                                15 años de trayectoria en investigación criminalística, defensa técnica y estrategia legal integral. Resolvemos sus controversias con excelencia.
-                            </p>
-                            <button onclick="navigate('servicios')" class="inline-flex items-center justify-center bg-gold-gradient text-[#0b0c10] px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(197,160,89,0.4)] hover:scale-105 transition-transform">
-                                Explorar Servicios <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </button>
-                        </div>
-                    </div>
+      <section id="view-home" class="view-section view-active">
+        <!-- HERO CAROUSEL -->
+        <div class="relative h-screen carousel-container">
+          <!-- Slide 1 -->
+          <div class="carousel-slide active" id="slide-0">
+            <div class="absolute inset-0">
+              <img
+                src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/comite.jpg"
+                alt="CIMAJ"
+                class="w-full h-full object-cover object-[20%_center] opacity-60"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"
+              ></div>
+            </div>
+            <div
+              class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20"
+            >
+              <div class="max-w-3xl">
+                <div class="flex items-center space-x-4 mb-6">
+                  <div class="h-[2px] w-12 bg-[#C5A059]"></div>
+                  <h2
+                    class="text-gold text-sm uppercase tracking-[0.3em] font-bold"
+                  >
+                    Corporación Legal y Financiera
+                  </h2>
                 </div>
+                <h1
+                  class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8"
+                >
+                  La justicia con <br /><span class="text-silver"
+                    >rostro humano.</span
+                  >
+                </h1>
+                <p
+                  class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6"
+                >
+                  15 años de trayectoria en investigación criminalística,
+                  defensa técnica y estrategia legal integral. Resolvemos sus
+                  controversias con excelencia.
+                </p>
+                <button
+                  onclick="navigate('servicios')"
+                  class="inline-flex items-center justify-center bg-gold-gradient text-[#0b0c10] px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(197,160,89,0.4)] hover:scale-105 transition-transform"
+                >
+                  Explorar Servicios
+                  <i class="fa-solid fa-arrow-right ml-3"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
-                <!-- Slide 2: Mediación -->
-                <div class="carousel-slide" id="slide-1">
-                    <div class="absolute inset-0">
-                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1920" alt="Mediación" class="w-full h-full object-cover opacity-50" />
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"></div>
-                    </div>
-                    <div class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20">
-                        <div class="max-w-3xl">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div class="h-[2px] w-12 bg-[#C5A059]"></div>
-                                <h2 class="text-gold text-sm uppercase tracking-[0.3em] font-bold">Área de Práctica</h2>
-                            </div>
-                            <h1 class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8">
-                                Mediación <br/><span class="text-silver">Certificada.</span>
-                            </h1>
-                            <p class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6">
-                                La vía más inteligente para resolver conflictos. Ahorre tiempo, evite juicios costosos y construya acuerdos mutuos respaldados por la ley.
-                            </p>
-                        </div>
-                    </div>
+          <!-- Slide 2: Mediación -->
+          <div class="carousel-slide" id="slide-1">
+            <div class="absolute inset-0">
+              <img
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1920"
+                alt="Mediación"
+                class="w-full h-full object-cover opacity-50"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"
+              ></div>
+            </div>
+            <div
+              class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20"
+            >
+              <div class="max-w-3xl">
+                <div class="flex items-center space-x-4 mb-6">
+                  <div class="h-[2px] w-12 bg-[#C5A059]"></div>
+                  <h2
+                    class="text-gold text-sm uppercase tracking-[0.3em] font-bold"
+                  >
+                    Área de Práctica
+                  </h2>
                 </div>
+                <h1
+                  class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8"
+                >
+                  Mediación <br /><span class="text-silver">Certificada.</span>
+                </h1>
+                <p
+                  class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6"
+                >
+                  La vía más inteligente para resolver conflictos. Ahorre
+                  tiempo, evite juicios costosos y construya acuerdos mutuos
+                  respaldados por la ley.
+                </p>
+              </div>
+            </div>
+          </div>
 
-                <!-- Slide 3: Defensa (Imagen actualizada a link de penal civil) -->
-                <div class="carousel-slide" id="slide-2">
-                    <div class="absolute inset-0">
-                        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/penal%20civil.png" alt="Defensa Legal" class="w-full h-full object-cover opacity-50" />
-                        <div class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"></div>
-                    </div>
-                    <div class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20">
-                        <div class="max-w-3xl">
-                            <div class="flex items-center space-x-4 mb-6">
-                                <div class="h-[2px] w-12 bg-[#C5A059]"></div>
-                                <h2 class="text-gold text-sm uppercase tracking-[0.3em] font-bold">Estrategia Jurídica</h2>
-                            </div>
-                            <h1 class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8">
-                                Defensa Penal <br/><span class="text-silver">y Civil.</span>
-                            </h1>
-                            <p class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6">
-                                Representación integral con investigación criminalística y defensa técnica impecable. Protegemos su libertad, su patrimonio y sus derechos.
-                            </p>
-                        </div>
-                    </div>
+          <!-- Slide 3: Defensa (Imagen actualizada a link de penal civil) -->
+          <div class="carousel-slide" id="slide-2">
+            <div class="absolute inset-0">
+              <img
+                src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/penal%20civil.png"
+                alt="Defensa Legal"
+                class="w-full h-full object-cover opacity-50"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-r from-[#0b0c10] via-[#0b0c10]/80 to-transparent"
+              ></div>
+            </div>
+            <div
+              class="relative max-w-7xl mx-auto px-4 w-full h-full flex items-center z-10 pt-20"
+            >
+              <div class="max-w-3xl">
+                <div class="flex items-center space-x-4 mb-6">
+                  <div class="h-[2px] w-12 bg-[#C5A059]"></div>
+                  <h2
+                    class="text-gold text-sm uppercase tracking-[0.3em] font-bold"
+                  >
+                    Estrategia Jurídica
+                  </h2>
                 </div>
+                <h1
+                  class="text-5xl md:text-7xl text-white font-serif font-bold leading-tight mb-8"
+                >
+                  Defensa Penal <br /><span class="text-silver">y Civil.</span>
+                </h1>
+                <p
+                  class="text-xl text-slate-300 mb-12 max-w-2xl font-light leading-relaxed border-l-2 border-[#C5A059] pl-6"
+                >
+                  Representación integral con investigación criminalística y
+                  defensa técnica impecable. Protegemos su libertad, su
+                  patrimonio y sus derechos.
+                </p>
+              </div>
+            </div>
+          </div>
 
-                <!-- Controles -->
-                <div class="absolute bottom-10 left-0 w-full z-20">
-                    <div class="max-w-7xl mx-auto px-4 flex space-x-3">
-                        <button onclick="goToSlide(0)" id="dot-0" class="w-12 h-1 bg-[#C5A059] rounded-full transition-all"></button>
-                        <button onclick="goToSlide(1)" id="dot-1" class="w-12 h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all"></button>
-                        <button onclick="goToSlide(2)" id="dot-2" class="w-12 h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all"></button>
-                    </div>
-                </div>
+          <!-- Controles -->
+          <div class="absolute bottom-10 left-0 w-full z-20">
+            <div class="max-w-7xl mx-auto px-4 flex space-x-3">
+              <button
+                onclick="goToSlide(0)"
+                id="dot-0"
+                class="w-12 h-1 bg-[#C5A059] rounded-full transition-all"
+              ></button>
+              <button
+                onclick="goToSlide(1)"
+                id="dot-1"
+                class="w-12 h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all"
+              ></button>
+              <button
+                onclick="goToSlide(2)"
+                id="dot-2"
+                class="w-12 h-1 bg-white/30 hover:bg-white/60 rounded-full transition-all"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TEASER STATS -->
+        <div
+          class="glass-panel border-y border-white/5 py-12 relative z-10 -mt-2 shadow-2xl"
+        >
+          <div
+            class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+          >
+            <div class="p-6">
+              <i class="fa-solid fa-landmark text-4xl text-[#C5A059] mb-4"></i>
+              <h3 class="text-silver font-serif text-xl font-bold mb-2">
+                Defensa Integral
+              </h3>
+              <p class="text-slate-400 font-light text-sm">
+                Cobertura en materia Penal, Civil, Laboral y Constitucional.
+              </p>
+            </div>
+            <div class="p-6 md:border-x border-white/10">
+              <i class="fa-solid fa-award text-4xl text-[#C5A059] mb-4"></i>
+              <h3 class="text-silver font-serif text-xl font-bold mb-2">
+                15 Años de Experiencia
+              </h3>
+              <p class="text-slate-400 font-light text-sm">
+                Trayectoria sólida respaldada por resultados comprobables.
+              </p>
+            </div>
+            <div class="p-6">
+              <i class="fa-solid fa-handshake text-4xl text-[#C5A059] mb-4"></i>
+              <h3 class="text-silver font-serif text-xl font-bold mb-2">
+                Mediación Certificada
+              </h3>
+              <p class="text-slate-400 font-light text-sm">
+                Resolución rápida, económica y confidencial para su
+                tranquilidad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN EQUIPO -->
+        <div class="pt-24 pb-32">
+          <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+              <h3
+                class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+              >
+                La Fuerza de CIMAJ
+              </h3>
+              <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">
+                Un equipo élite
+              </h2>
             </div>
 
-            <!-- TEASER STATS -->
-            <div class="glass-panel border-y border-white/5 py-12 relative z-10 -mt-2 shadow-2xl">
-                <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="p-6">
-                        <i class="fa-solid fa-landmark text-4xl text-[#C5A059] mb-4"></i>
-                        <h3 class="text-silver font-serif text-xl font-bold mb-2">Defensa Integral</h3>
-                        <p class="text-slate-400 font-light text-sm">Cobertura en materia Penal, Civil, Laboral y Constitucional.</p>
-                    </div>
-                    <div class="p-6 md:border-x border-white/10">
-                        <i class="fa-solid fa-award text-4xl text-[#C5A059] mb-4"></i>
-                        <h3 class="text-silver font-serif text-xl font-bold mb-2">15 Años de Experiencia</h3>
-                        <p class="text-slate-400 font-light text-sm">Trayectoria sólida respaldada por resultados comprobables.</p>
-                    </div>
-                    <div class="p-6">
-                        <i class="fa-solid fa-handshake text-4xl text-[#C5A059] mb-4"></i>
-                        <h3 class="text-silver font-serif text-xl font-bold mb-2">Mediación Certificada</h3>
-                        <p class="text-slate-400 font-light text-sm">Resolución rápida, económica y confidencial para su tranquilidad.</p>
-                    </div>
-                </div>
+            <div
+              class="relative border border-white/10 overflow-hidden group rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-16"
+            >
+              <img
+                src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/equipo.jpg"
+                alt="Equipo"
+                class="w-full h-[50vh] md:h-[60vh] object-cover transition-all duration-[1000ms] ease-in-out group-hover:scale-[1.02]"
+              />
+              <div
+                class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+              ></div>
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/60 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70 z-20 pointer-events-none"
+              ></div>
+
+              <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full z-30">
+                <h3 class="text-silver font-serif text-3xl font-bold mb-2">
+                  Estrategia, pasión y compromiso
+                </h3>
+                <p class="text-slate-200 max-w-2xl text-lg font-light">
+                  Profesionales con acreditaciones destacadas, peritos
+                  criminalísticos y mediadores certificados respaldan la
+                  seriedad de nuestro servicio.
+                </p>
+              </div>
             </div>
 
-            <!-- SECCIÓN EQUIPO -->
-            <div class="pt-24 pb-32">
-                <div class="max-w-7xl mx-auto px-4">
-                    <div class="text-center mb-16">
-                        <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">La Fuerza de CIMAJ</h3>
-                        <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Un equipo élite</h2>
-                    </div>
-                    
-                    <div class="relative border border-white/10 overflow-hidden group rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-16">
-                        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/equipo.jpg" alt="Equipo" class="w-full h-[50vh] md:h-[60vh] object-cover transition-all duration-[1000ms] ease-in-out group-hover:scale-[1.02]" />
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/60 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70 z-20 pointer-events-none"></div>
-                        
-                        <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full z-30">
-                            <h3 class="text-silver font-serif text-3xl font-bold mb-2">Estrategia, pasión y compromiso</h3>
-                            <p class="text-slate-200 max-w-2xl text-lg font-light">Profesionales con acreditaciones destacadas, peritos criminalísticos y mediadores certificados respaldan la seriedad de nuestro servicio.</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Carlos -->
-                        <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
-                        <!-- Luis Miguel -->
-                        <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Penal y Constitucional</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
-                        <!-- Viviana -->
-                        <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Carlos -->
+              <div
+                onclick="openInfoModal('carlos')"
+                class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+              >
+                <div class="aspect-[3/4] overflow-hidden relative">
+                  <img
+                    src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg"
+                    alt="Carlos"
+                    class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                  ></div>
                 </div>
+                <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                  <h4 class="text-xl text-white font-serif font-bold">
+                    Dr. Carlos Cisneros V.
+                  </h4>
+                  <p
+                    class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                  >
+                    CEO & Director
+                  </p>
+                  <p class="text-slate-300 text-sm font-light">
+                    Clic para ver perfil
+                    <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                  </p>
+                </div>
+              </div>
+              <!-- Luis Miguel -->
+              <div
+                onclick="openInfoModal('luis')"
+                class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+              >
+                <div class="aspect-[3/4] overflow-hidden relative">
+                  <img
+                    src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png"
+                    alt="Luis"
+                    class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                  ></div>
+                </div>
+                <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                  <h4 class="text-xl text-white font-serif font-bold">
+                    Abg. Luis Miguel Oña
+                  </h4>
+                  <p
+                    class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                  >
+                    Der. Penal y Constitucional
+                  </p>
+                  <p class="text-slate-300 text-sm font-light">
+                    Clic para ver perfil
+                    <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                  </p>
+                </div>
+              </div>
+              <!-- Viviana -->
+              <div
+                onclick="openInfoModal('vivi')"
+                class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+              >
+                <div class="aspect-[3/4] overflow-hidden relative">
+                  <img
+                    src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg"
+                    alt="Viviana"
+                    class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                  ></div>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                  ></div>
+                </div>
+                <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                  <h4 class="text-xl text-white font-serif font-bold">
+                    Viviana Echeverría
+                  </h4>
+                  <p
+                    class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                  >
+                    Mediadora Certificada
+                  </p>
+                  <p class="text-slate-300 text-sm font-light">
+                    Clic para ver perfil
+                    <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                  </p>
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- ==========================================
+      <!-- ==========================================
              VISTA 2: HISTORIA E IDENTIDAD
         ========================================== -->
-        <section id="view-historia" class="view-section pt-32 pb-24 relative">
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="text-center mb-16">
-                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Nuestra Identidad</h3>
-                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Compromiso con la Excelencia</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-                    <div class="glass-panel p-10 rounded-2xl hover:border-[#C5A059]/50 transition-colors shadow-2xl">
-                        <i class="fa-solid fa-shield-halved text-4xl text-[#C5A059] mb-6 drop-shadow-lg"></i>
-                        <h3 class="text-3xl text-silver font-serif font-bold mb-4">Nuestra Misión</h3>
-                        <p class="text-slate-300 font-light leading-relaxed">Defender los intereses personales y económicos de nuestros clientes para que puedan alcanzar sus objetivos de manera transparente, con la mayor confidencialidad en nuestros asesores especializados.</p>
-                    </div>
-                    <div class="glass-panel p-10 rounded-2xl hover:border-[#C5A059]/50 transition-colors shadow-2xl">
-                        <i class="fa-solid fa-scale-balanced text-4xl text-[#C5A059] mb-6 drop-shadow-lg"></i>
-                        <h3 class="text-3xl text-silver font-serif font-bold mb-4">Nuestra Visión</h3>
-                        <p class="text-slate-300 font-light leading-relaxed">Nuestra visión de trabajo se basa en el ímpetu, esfuerzo y dedicación para conseguir siempre los mejores resultados. Creemos firmemente que la gente tiene que disfrutar con su trabajo y nosotros somos apasionados del nuestro.</p>
-                    </div>
-                </div>
+      <section id="view-historia" class="view-section pt-32 pb-24 relative">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h3
+              class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+            >
+              Nuestra Identidad
+            </h3>
+            <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">
+              Compromiso con la Excelencia
+            </h2>
+          </div>
 
-                <div class="relative overflow-hidden glass-panel border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl group">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-gold-gradient"></div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
-                        <div class="md:col-span-1 overflow-hidden rounded-2xl shadow-lg border border-white/5 relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Dr. Carlos Cisneros" class="w-full h-auto object-cover transition-all duration-700 transform group-hover:scale-105" />
-                        </div>
-                        <div class="md:col-span-2 space-y-6 z-20">
-                            <h3 class="text-[#C5A059] font-bold tracking-widest text-sm uppercase">Mensaje del CEO y Director Jurídico</h3>
-                            <h4 class="text-3xl md:text-4xl text-silver font-serif italic leading-tight">"Nuestra diferencia está en la unión de dos fortalezas: la investigación y la asesoría legal estratégica."</h4>
-                            <p class="text-slate-300 font-light leading-relaxed text-lg">No solo atendemos un caso, lo analizamos a fondo, anticipamos escenarios y diseñamos la mejor ruta para lograr resultados. Queremos que nuestros clientes sientan que no están solos, que cuentan con un equipo apasionado por su trabajo. Nuestro objetivo es crecer sin perder lo más importante: la cercanía con el cliente.</p>
-                            <div class="pt-6 border-t border-white/10">
-                                <h5 class="text-white font-bold uppercase tracking-widest text-sm">Dr. Carlos Cisneros V.</h5>
-                                <p class="text-[#C5A059] text-xs uppercase tracking-widest mt-1 font-bold">Fundador CIMAJ</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+            <div
+              class="glass-panel p-10 rounded-2xl hover:border-[#C5A059]/50 transition-colors shadow-2xl"
+            >
+              <i
+                class="fa-solid fa-shield-halved text-4xl text-[#C5A059] mb-6 drop-shadow-lg"
+              ></i>
+              <h3 class="text-3xl text-silver font-serif font-bold mb-4">
+                Nuestra Misión
+              </h3>
+              <p class="text-slate-300 font-light leading-relaxed">
+                Defender los intereses personales y económicos de nuestros
+                clientes para que puedan alcanzar sus objetivos de manera
+                transparente, con la mayor confidencialidad en nuestros asesores
+                especializados.
+              </p>
             </div>
-        </section>
+            <div
+              class="glass-panel p-10 rounded-2xl hover:border-[#C5A059]/50 transition-colors shadow-2xl"
+            >
+              <i
+                class="fa-solid fa-scale-balanced text-4xl text-[#C5A059] mb-6 drop-shadow-lg"
+              ></i>
+              <h3 class="text-3xl text-silver font-serif font-bold mb-4">
+                Nuestra Visión
+              </h3>
+              <p class="text-slate-300 font-light leading-relaxed">
+                Nuestra visión de trabajo se basa en el ímpetu, esfuerzo y
+                dedicación para conseguir siempre los mejores resultados.
+                Creemos firmemente que la gente tiene que disfrutar con su
+                trabajo y nosotros somos apasionados del nuestro.
+              </p>
+            </div>
+          </div>
 
-        <!-- ==========================================
+          <div
+            class="relative overflow-hidden glass-panel border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl group"
+          >
+            <div
+              class="absolute top-0 left-0 w-2 h-full bg-gold-gradient"
+            ></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+              <div
+                class="md:col-span-1 overflow-hidden rounded-2xl shadow-lg border border-white/5 relative"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg"
+                  alt="Dr. Carlos Cisneros"
+                  class="w-full h-auto object-cover transition-all duration-700 transform group-hover:scale-105"
+                />
+              </div>
+              <div class="md:col-span-2 space-y-6 z-20">
+                <h3
+                  class="text-[#C5A059] font-bold tracking-widest text-sm uppercase"
+                >
+                  Mensaje del CEO y Director Jurídico
+                </h3>
+                <h4
+                  class="text-3xl md:text-4xl text-silver font-serif italic leading-tight"
+                >
+                  "Nuestra diferencia está en la unión de dos fortalezas: la
+                  investigación y la asesoría legal estratégica."
+                </h4>
+                <p class="text-slate-300 font-light leading-relaxed text-lg">
+                  No solo atendemos un caso, lo analizamos a fondo, anticipamos
+                  escenarios y diseñamos la mejor ruta para lograr resultados.
+                  Queremos que nuestros clientes sientan que no están solos, que
+                  cuentan con un equipo apasionado por su trabajo. Nuestro
+                  objetivo es crecer sin perder lo más importante: la cercanía
+                  con el cliente.
+                </p>
+                <div class="pt-6 border-t border-white/10">
+                  <h5
+                    class="text-white font-bold uppercase tracking-widest text-sm"
+                  >
+                    Dr. Carlos Cisneros V.
+                  </h5>
+                  <p
+                    class="text-[#C5A059] text-xs uppercase tracking-widest mt-1 font-bold"
+                  >
+                    Fundador CIMAJ
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
              VISTA 2.5: DIRECTIVA (EQUIPO EXCLUSIVO SPA)
         ========================================== -->
-        <section id="view-equipo" class="view-section pt-32 pb-24 relative">
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="text-center mb-16">
-                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Directiva</h3>
-                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Profesionales de Élite</h2>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Carlos -->
-                    <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
-                    <!-- Luis Miguel -->
-                    <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Penal y Constitucional</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
-                    <!-- Viviana -->
-                    <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section id="view-equipo" class="view-section pt-32 pb-24 relative">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h3
+              class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+            >
+              Directiva
+            </h3>
+            <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">
+              Profesionales de Élite
+            </h2>
+          </div>
 
-        <!-- ==========================================
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Carlos -->
+            <div
+              onclick="openInfoModal('carlos')"
+              class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+            >
+              <div class="aspect-[3/4] overflow-hidden relative">
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg"
+                  alt="Carlos"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                ></div>
+              </div>
+              <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                <h4 class="text-xl text-white font-serif font-bold">
+                  Dr. Carlos Cisneros V.
+                </h4>
+                <p
+                  class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                >
+                  CEO & Director
+                </p>
+                <p class="text-slate-300 text-sm font-light">
+                  Clic para ver perfil
+                  <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                </p>
+              </div>
+            </div>
+            <!-- Luis Miguel -->
+            <div
+              onclick="openInfoModal('luis')"
+              class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+            >
+              <div class="aspect-[3/4] overflow-hidden relative">
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png"
+                  alt="Luis"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                ></div>
+              </div>
+              <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                <h4 class="text-xl text-white font-serif font-bold">
+                  Abg. Luis Miguel Oña
+                </h4>
+                <p
+                  class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                >
+                  Der. Penal y Constitucional
+                </p>
+                <p class="text-slate-300 text-sm font-light">
+                  Clic para ver perfil
+                  <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                </p>
+              </div>
+            </div>
+            <!-- Viviana -->
+            <div
+              onclick="openInfoModal('vivi')"
+              class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group"
+            >
+              <div class="aspect-[3/4] overflow-hidden relative">
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg"
+                  alt="Viviana"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"
+                ></div>
+              </div>
+              <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                <h4 class="text-xl text-white font-serif font-bold">
+                  Viviana Echeverría
+                </h4>
+                <p
+                  class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1"
+                >
+                  Mediadora Certificada
+                </p>
+                <p class="text-slate-300 text-sm font-light">
+                  Clic para ver perfil
+                  <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
              VISTA 3: SERVICIOS
         ========================================== -->
-        <section id="view-servicios" class="view-section pt-32 pb-24 relative">
-            <div class="max-w-7xl mx-auto px-4 relative z-10">
-                <div class="text-center mb-16">
-                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Áreas de Práctica</h3>
-                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold mb-6">Soluciones para su tranquilidad</h2>
-                    <p class="text-slate-300 font-light text-lg max-w-3xl mx-auto">Conozca a detalle nuestras especialidades haciendo clic sobre cada una de ellas.</p>
-                </div>
+      <section id="view-servicios" class="view-section pt-32 pb-24 relative">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h3
+              class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+            >
+              Áreas de Práctica
+            </h3>
+            <h2
+              class="text-4xl md:text-5xl text-silver font-serif font-bold mb-6"
+            >
+              Soluciones para su tranquilidad
+            </h2>
+            <p class="text-slate-300 font-light text-lg max-w-3xl mx-auto">
+              Conozca a detalle nuestras especialidades haciendo clic sobre cada
+              una de ellas.
+            </p>
+          </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Civil -->
-                    <div onclick="openInfoModal('civil')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800" alt="Civil" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <!-- Efecto Hover -->
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-scale-balanced absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Civil y Notarial</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Cobro de letras de cambio, contratos, desalojos, escrituras, poderes, juicios en documentos y declaraciones juramentadas.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                    <!-- Penal (Link actualizado a penal civil.png) -->
-                    <div onclick="openInfoModal('penal')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/penal%20civil.png" alt="Penal" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-shield-halved absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Defensa Penal</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Representación jurídica integral, defensa técnica estratégica, apelaciones, procedimientos de protección y formulación de denuncias.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                    <!-- Tránsito -->
-                    <div onclick="openInfoModal('transito')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800" alt="Tránsito" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-car absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Tránsito</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Juicios y mediación de accidentes de tránsito, impugnación de citaciones, liberación de vehículos y recuperación de puntos.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                    <!-- Familia -->
-                    <div onclick="openInfoModal('familia')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800" alt="Familia" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-users absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Familia</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Regulación de pensiones alimenticias, régimen de visitas, juicios de divorcio y procesos integrales de mediación familiar.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                    <!-- Laboral -->
-                    <div onclick="openInfoModal('laboral')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800" alt="Laboral" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-briefcase absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Laboral y Tributario</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Defensa de derechos laborales, controversias tributarias, conciliaciones y elaboración de reglamentos de orden interno.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                    <!-- Mediación -->
-                    <div onclick="openInfoModal('mediacion')" class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer">
-                        <div class="h-48 relative overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800" alt="Mediación" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"></div>
-                            <i class="fa-solid fa-handshake absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"></i>
-                        </div>
-                        <div class="p-8 flex-grow">
-                            <h4 class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors">Mediación Certificada</h4>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">Evite años de juicios y altos costos. La mediación es una solución rápida, económica y confidencial para construir un acuerdo mutuo.</p>
-                            <span class="text-[#C5A059] text-xs uppercase tracking-widest font-bold">Ver Información Completa <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                        </div>
-                    </div>
-                </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Civil -->
+            <div
+              onclick="openInfoModal('civil')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800"
+                  alt="Civil"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <!-- Efecto Hover -->
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-scale-balanced absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Civil y Notarial
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Cobro de letras de cambio, contratos, desalojos, escrituras,
+                  poderes, juicios en documentos y declaraciones juramentadas.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
             </div>
-        </section>
+            <!-- Penal (Link actualizado a penal civil.png) -->
+            <div
+              onclick="openInfoModal('penal')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/penal%20civil.png"
+                  alt="Penal"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-shield-halved absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Defensa Penal
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Representación jurídica integral, defensa técnica estratégica,
+                  apelaciones, procedimientos de protección y formulación de
+                  denuncias.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
+            </div>
+            <!-- Tránsito -->
+            <div
+              onclick="openInfoModal('transito')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800"
+                  alt="Tránsito"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-car absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Tránsito
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Juicios y mediación de accidentes de tránsito, impugnación de
+                  citaciones, liberación de vehículos y recuperación de puntos.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
+            </div>
+            <!-- Familia -->
+            <div
+              onclick="openInfoModal('familia')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800"
+                  alt="Familia"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-users absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Familia
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Regulación de pensiones alimenticias, régimen de visitas,
+                  juicios de divorcio y procesos integrales de mediación
+                  familiar.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
+            </div>
+            <!-- Laboral -->
+            <div
+              onclick="openInfoModal('laboral')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800"
+                  alt="Laboral"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-briefcase absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Laboral y Tributario
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Defensa de derechos laborales, controversias tributarias,
+                  conciliaciones y elaboración de reglamentos de orden interno.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
+            </div>
+            <!-- Mediación -->
+            <div
+              onclick="openInfoModal('mediacion')"
+              class="glass-panel rounded-2xl overflow-hidden hover:border-[#C5A059]/50 transition-all duration-500 group flex flex-col cursor-pointer"
+            >
+              <div class="h-48 relative overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800"
+                  alt="Mediación"
+                  class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] to-transparent opacity-90 z-20 pointer-events-none"
+                ></div>
+                <i
+                  class="fa-solid fa-handshake absolute bottom-4 left-6 text-3xl text-[#C5A059] drop-shadow-md group-hover:-translate-y-1 transition-transform z-30"
+                ></i>
+              </div>
+              <div class="p-8 flex-grow">
+                <h4
+                  class="text-2xl text-silver font-serif font-bold mb-4 group-hover:text-[#Fdf5a6] transition-colors"
+                >
+                  Mediación Certificada
+                </h4>
+                <p
+                  class="text-slate-300 font-light text-sm leading-relaxed mb-4"
+                >
+                  Evite años de juicios y altos costos. La mediación es una
+                  solución rápida, económica y confidencial para construir un
+                  acuerdo mutuo.
+                </p>
+                <span
+                  class="text-[#C5A059] text-xs uppercase tracking-widest font-bold"
+                  >Ver Información Completa
+                  <i class="fa-solid fa-arrow-right ml-1"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- ==========================================
+      <!-- ==========================================
              VISTA 4: MULTIMEDIA (Sin Mapa)
         ========================================== -->
-        <section id="view-multimedia" class="view-section pt-32 pb-24 relative">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-16">
-                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Nuestra Presencia</h3>
-                    <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Medios y Multimedia</h2>
-                </div>
+      <section id="view-multimedia" class="view-section pt-32 pb-24 relative">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-16">
+            <h3
+              class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+            >
+              Nuestra Presencia
+            </h3>
+            <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">
+              Medios y Multimedia
+            </h2>
+          </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-                    <!-- Opinión Experta -->
-                    <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-tv mr-2"></i> Opinión Experta</h3>
-                            <h4 class="text-3xl text-silver font-serif font-bold mb-6">CIMAJ en Medios</h4>
-                            <p class="text-slate-300 font-light mb-6">Nuestro equipo es frecuentemente consultado por medios nacionales para brindar análisis jurídico sobre temas de coyuntura y seguridad.</p>
-                        </div>
-                        <div class="rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_20px_rgba(0,0,0,0.5)] h-56">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg" alt="Entrevista" class="w-full h-full object-cover transition-all duration-700">
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="absolute inset-0 bg-[#0b0c10]/40 flex items-center justify-center group-hover:bg-[#0b0c10]/60 transition-colors z-20">
-                                <i class="fa-regular fa-circle-play text-6xl text-[#C5A059] drop-shadow-[0_0_15px_rgba(197,160,89,0.6)] group-hover:scale-110 transition-transform"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Redes Sociales (Reemplazo de Ubicación) -->
-                    <div class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"><i class="fa-solid fa-hashtag mr-2"></i> Comunidad</h3>
-                            <h4 class="text-3xl text-silver font-serif font-bold mb-4">Síguenos en Redes</h4>
-                            <p class="text-slate-300 font-light mb-8">Únase a nuestra comunidad digital para recibir consejos legales, actualizaciones normativas y conocer más de cerca nuestro trabajo diario.</p>
-                        </div>
-                        <div class="grid grid-cols-3 gap-4">
-                            <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
-                                <i class="fa-brands fa-facebook-f text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
-                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">Facebook</span>
-                            </a>
-                            <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
-                                <i class="fa-brands fa-instagram text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
-                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">Instagram</span>
-                            </a>
-                            <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group">
-                                <i class="fa-brands fa-tiktok text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"></i>
-                                <span class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white">TikTok</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Videos TikTok con Títulos Formales -->
-                <h3 class="text-silver font-serif text-2xl font-bold mb-8 border-b border-white/10 pb-4">Consejos y Contenido Digital</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <a href="https://vt.tiktok.com/ZSxPJ4G3A/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <!-- Vista Previa de Video (Civil) -->
-                        <div class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center">
-                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
-                            
-                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
-                            <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
-                                <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
-                            </div>
-                        </div>
-                        <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Asesoría Legal Estratégica</span>
-                        </div>
-                    </a>
-                    
-                    <a href="https://vt.tiktok.com/ZSxPeJrpX/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <!-- Vista Previa de Video (Familia) -->
-                        <div class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center">
-                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
-                            
-                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
-                            <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
-                                <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
-                            </div>
-                        </div>
-                        <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Importancia de la Mediación</span>
-                        </div>
-                    </a>
-                    
-                    <a href="https://vt.tiktok.com/ZSxPeA5gR/" target="_blank" class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block">
-                        <!-- Vista Previa de Video (Mediación) -->
-                        <div class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center">
-                            <div class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"></div>
-                            
-                            <i class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"></i>
-                            <div class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20">
-                                <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
-                            </div>
-                        </div>
-                        <div class="p-4 text-center border-t border-white/5 bg-black/40">
-                            <span class="text-slate-300 font-medium text-sm">Defensa Jurídica Integral</span>
-                        </div>
-                    </a>
-                </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <!-- Opinión Experta -->
+            <div
+              class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between"
+            >
+              <div>
+                <h3
+                  class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"
+                >
+                  <i class="fa-solid fa-tv mr-2"></i> Opinión Experta
+                </h3>
+                <h4 class="text-3xl text-silver font-serif font-bold mb-6">
+                  CIMAJ en Medios
+                </h4>
+                <p class="text-slate-300 font-light mb-6">
+                  Nuestro equipo es frecuentemente consultado por medios
+                  nacionales para brindar análisis jurídico sobre temas de
+                  coyuntura y seguridad.
+                </p>
+              </div>
+              <div
+                class="rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_20px_rgba(0,0,0,0.5)] h-56"
+              >
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/entrevista.jpg"
+                  alt="Entrevista"
+                  class="w-full h-full object-cover transition-all duration-700"
+                />
+                <div
+                  class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"
+                ></div>
+                <a
+                  href="https://www.facebook.com/share/14gDs7LmGvP/"
+                  target="_blank"
+                  class="absolute inset-0 bg-[#0b0c10]/40 flex items-center justify-center group-hover:bg-[#0b0c10]/60 transition-colors z-20"
+                >
+                  <i
+                    class="fa-regular fa-circle-play text-6xl text-[#C5A059] drop-shadow-[0_0_15px_rgba(197,160,89,0.6)] group-hover:scale-110 transition-transform"
+                  ></i>
+                </a>
+              </div>
             </div>
-        </section>
 
-        <!-- ==========================================
+            <!-- Redes Sociales (Reemplazo de Ubicación) -->
+            <div
+              class="glass-panel p-8 md:p-12 rounded-3xl flex flex-col justify-between"
+            >
+              <div>
+                <h3
+                  class="text-[#C5A059] font-bold uppercase tracking-widest text-xs mb-3"
+                >
+                  <i class="fa-solid fa-hashtag mr-2"></i> Comunidad
+                </h3>
+                <h4 class="text-3xl text-silver font-serif font-bold mb-4">
+                  Síguenos en Redes
+                </h4>
+                <p class="text-slate-300 font-light mb-8">
+                  Únase a nuestra comunidad digital para recibir consejos
+                  legales, actualizaciones normativas y conocer más de cerca
+                  nuestro trabajo diario.
+                </p>
+              </div>
+              <div class="grid grid-cols-3 gap-4">
+                <a
+                  href="https://www.facebook.com/share/14gDs7LmGvP/"
+                  target="_blank"
+                  class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group"
+                >
+                  <i
+                    class="fa-brands fa-facebook-f text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"
+                  ></i>
+                  <span
+                    class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white"
+                    >Facebook</span
+                  >
+                </a>
+                <a
+                  href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ=="
+                  target="_blank"
+                  class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group"
+                >
+                  <i
+                    class="fa-brands fa-instagram text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"
+                  ></i>
+                  <span
+                    class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white"
+                    >Instagram</span
+                  >
+                </a>
+                <a
+                  href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR"
+                  target="_blank"
+                  class="flex flex-col items-center justify-center p-6 border border-white/10 rounded-xl hover:bg-[#C5A059]/20 hover:border-[#C5A059]/50 transition-all duration-300 group"
+                >
+                  <i
+                    class="fa-brands fa-tiktok text-4xl text-white/50 group-hover:text-[#C5A059] mb-3 transition-colors"
+                  ></i>
+                  <span
+                    class="text-xs uppercase tracking-widest font-bold text-slate-400 group-hover:text-white"
+                    >TikTok</span
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Videos TikTok con Títulos Formales -->
+          <h3
+            class="text-silver font-serif text-2xl font-bold mb-8 border-b border-white/10 pb-4"
+          >
+            Consejos y Contenido Digital
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a
+              href="https://vt.tiktok.com/ZSxPJ4G3A/"
+              target="_blank"
+              class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block"
+            >
+              <!-- Vista Previa de Video (Civil) -->
+              <div
+                class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center"
+              >
+                <div
+                  class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"
+                ></div>
+
+                <i
+                  class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"
+                ></i>
+                <div
+                  class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20"
+                >
+                  <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
+                </div>
+              </div>
+              <div class="p-4 text-center border-t border-white/5 bg-black/40">
+                <span class="text-slate-300 font-medium text-sm"
+                  >Asesoría Legal Estratégica</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="https://vt.tiktok.com/ZSxPeJrpX/"
+              target="_blank"
+              class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block"
+            >
+              <!-- Vista Previa de Video (Familia) -->
+              <div
+                class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center"
+              >
+                <div
+                  class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"
+                ></div>
+
+                <i
+                  class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"
+                ></i>
+                <div
+                  class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20"
+                >
+                  <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
+                </div>
+              </div>
+              <div class="p-4 text-center border-t border-white/5 bg-black/40">
+                <span class="text-slate-300 font-medium text-sm"
+                  >Importancia de la Mediación</span
+                >
+              </div>
+            </a>
+
+            <a
+              href="https://vt.tiktok.com/ZSxPeA5gR/"
+              target="_blank"
+              class="glass-panel hover:border-[#C5A059]/50 transition-all duration-300 rounded-2xl overflow-hidden shadow-lg group block"
+            >
+              <!-- Vista Previa de Video (Mediación) -->
+              <div
+                class="relative aspect-[9/16] bg-[url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800')] bg-cover bg-center flex flex-col items-center justify-center"
+              >
+                <div
+                  class="absolute inset-0 bg-[#0b0c10]/70 group-hover:bg-[#0b0c10]/50 transition-colors duration-500 z-10 pointer-events-none"
+                ></div>
+
+                <i
+                  class="fa-brands fa-tiktok text-6xl text-white/60 group-hover:text-[#C5A059] transition-colors mb-4 drop-shadow-md z-20"
+                ></i>
+                <div
+                  class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all flex items-center shadow-lg z-20"
+                >
+                  <i class="fa-solid fa-play mr-2"></i> Ver en TikTok
+                </div>
+              </div>
+              <div class="p-4 text-center border-t border-white/5 bg-black/40">
+                <span class="text-slate-300 font-medium text-sm"
+                  >Defensa Jurídica Integral</span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
              VISTA 5: REVISTA (Optimizada con Portada)
         ========================================== -->
-        <section id="view-revista" class="view-section pt-32 pb-24 relative">
-            <div class="max-w-6xl mx-auto px-4 relative z-10">
-                <div class="text-center mb-12">
-                    <h3 class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4">Publicación Oficial</h3>
-                    <h2 class="text-4xl text-silver font-serif font-bold mb-4">Revista CIMAJ</h2>
-                </div>
+      <section id="view-revista" class="view-section pt-32 pb-24 relative">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+          <div class="text-center mb-12">
+            <h3
+              class="text-gold text-sm uppercase tracking-[0.3em] font-bold mb-4"
+            >
+              Publicación Oficial
+            </h3>
+            <h2 class="text-4xl text-silver font-serif font-bold mb-4">
+              Revista CIMAJ
+            </h2>
+          </div>
 
-                <div class="glass-panel rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-10">
-                    
-                    <!-- Portada Miniatura (Aspecto Libro) -->
-                    <div class="w-full md:w-2/5 relative rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-[0_0_40px_rgba(197,160,89,0.15)] group bg-[#050608]">
-                        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/Cover%20Page.png" alt="Portada Revista CIMAJ" class="w-full h-auto aspect-[3/4] object-contain transition-transform duration-700 group-hover:scale-105">
-                        
-                        <!-- Efectos sobre la portada sin blur -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/20 to-transparent opacity-90"></div>
-                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500"></div>
-                        
-                        <div class="absolute bottom-8 left-0 w-full text-center z-20">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" class="h-10 mx-auto mb-3 opacity-90">
-                            <p class="text-[#C5A059] font-bold text-sm uppercase tracking-widest drop-shadow-md">Edición Especial</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Recuadro Detalle y Botón Descarga -->
-                    <div class="w-full md:w-3/5 bg-[#050608]/80 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/5 flex flex-col justify-center items-start shadow-inner">
-                        <h4 class="text-3xl text-silver font-serif font-bold mb-6">Descubra nuestro legado en páginas</h4>
-                        <p class="text-slate-300 font-light leading-relaxed mb-10 text-lg">
-                            Acceda a nuestra revista corporativa oficial. En ella detallamos nuestra trayectoria, casos de éxito, artículos de opinión de nuestros abogados expertos y el impacto transformador de la mediación en la sociedad ecuatoriana.
-                        </p>
-                        <a href="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/revista%20cimaj.pdf" target="_blank" class="bg-gold-gradient text-[#0b0c10] font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_0_20px_rgba(197,160,89,0.3)] flex items-center hover:scale-[1.03] transition-transform">
-                            <i class="fa-solid fa-book-open mr-3 text-lg"></i> Leer Revista / Ver PDF
-                        </a>
-                    </div>
+          <div
+            class="glass-panel rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-10"
+          >
+            <!-- Portada Miniatura (Aspecto Libro) -->
+            <div
+              class="w-full md:w-2/5 relative rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-[0_0_40px_rgba(197,160,89,0.15)] group bg-[#050608]"
+            >
+              <img
+                src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/Cover%20Page.png"
+                alt="Portada Revista CIMAJ"
+                class="w-full h-auto aspect-[3/4] object-contain transition-transform duration-700 group-hover:scale-105"
+              />
 
-                </div>
+              <!-- Efectos sobre la portada sin blur -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-[#0b0c10]/20 to-transparent opacity-90"
+              ></div>
+              <div
+                class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-500"
+              ></div>
+
+              <div class="absolute bottom-8 left-0 w-full text-center z-20">
+                <img
+                  src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png"
+                  class="h-10 mx-auto mb-3 opacity-90"
+                />
+                <p
+                  class="text-[#C5A059] font-bold text-sm uppercase tracking-widest drop-shadow-md"
+                >
+                  Edición Especial
+                </p>
+              </div>
             </div>
-        </section>
 
+            <!-- Recuadro Detalle y Botón Descarga -->
+            <div
+              class="w-full md:w-3/5 bg-[#050608]/80 backdrop-blur-md rounded-2xl p-8 md:p-12 border border-white/5 flex flex-col justify-center items-start shadow-inner"
+            >
+              <h4 class="text-3xl text-silver font-serif font-bold mb-6">
+                Descubra nuestro legado en páginas
+              </h4>
+              <p
+                class="text-slate-300 font-light leading-relaxed mb-10 text-lg"
+              >
+                Acceda a nuestra revista corporativa oficial. En ella detallamos
+                nuestra trayectoria, casos de éxito, artículos de opinión de
+                nuestros abogados expertos y el impacto transformador de la
+                mediación en la sociedad ecuatoriana.
+              </p>
+              <a
+                href="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/revista%20cimaj.pdf"
+                target="_blank"
+                class="bg-gold-gradient text-[#0b0c10] font-bold text-sm uppercase tracking-widest px-8 py-4 rounded-xl shadow-[0_0_20px_rgba(197,160,89,0.3)] flex items-center hover:scale-[1.03] transition-transform"
+              >
+                <i class="fa-solid fa-book-open mr-3 text-lg"></i> Leer Revista
+                / Ver PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="glass-panel border-t border-white/5 pt-16 pb-8 relative mt-auto z-10">
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-1 md:col-span-2">
-                    <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png" alt="CIMAJ" class="h-14 mb-6 opacity-90" />
-                    <p class="text-slate-400 font-light text-sm max-w-md mb-6 leading-relaxed">
-                        Defendemos sus intereses con transparencia, estrategia analítica y absoluta confidencialidad.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="text-silver font-serif font-bold mb-4">Contacto</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li><i class="fa-brands fa-whatsapp text-[#C5A059] w-5"></i> <a href="https://wa.me/593998877398" target="_blank" class="hover:text-[#Fdf5a6] transition-colors">099 887 7398</a></li>
-                        <li><i class="fa-solid fa-envelope text-[#C5A059] w-5"></i> <a href="mailto:cimaj.ecuador2025@hotmail.com" class="hover:text-[#Fdf5a6] transition-colors">cimaj.ecuador2025@hotmail.com</a></li>
-                    </ul>
-                </div>
-                <!-- Reemplazo de Ubicación por Redes en Footer -->
-                <div>
-                    <h4 class="text-silver font-serif font-bold mb-4">Síguenos</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-4">Únase a nuestra comunidad digital para recibir contenido de valor jurídico.</p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/share/14gDs7LmGvP/" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-facebook-f text-lg w-5 text-center"></i></a>
-                        <a href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ==" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-instagram text-lg w-5 text-center"></i></a>
-                        <a href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR" target="_blank" class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"><i class="fa-brands fa-tiktok text-lg w-5 text-center"></i></a>
-                    </div>
-                </div>
+    <footer
+      class="glass-panel border-t border-white/5 pt-16 pb-8 relative mt-auto z-10"
+    >
+      <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12"
+        >
+          <div class="col-span-1 md:col-span-2">
+            <img
+              src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20H%20Blanco.png"
+              alt="CIMAJ"
+              class="h-14 mb-6 opacity-90"
+            />
+            <p
+              class="text-slate-400 font-light text-sm max-w-md mb-6 leading-relaxed"
+            >
+              Defendemos sus intereses con transparencia, estrategia analítica y
+              absoluta confidencialidad.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-silver font-serif font-bold mb-4">Contacto</h4>
+            <ul class="space-y-3 text-sm text-slate-400">
+              <li>
+                <i class="fa-brands fa-whatsapp text-[#C5A059] w-5"></i>
+                <a
+                  href="https://wa.me/593998877398"
+                  target="_blank"
+                  class="hover:text-[#Fdf5a6] transition-colors"
+                  >099 887 7398</a
+                >
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope text-[#C5A059] w-5"></i>
+                <a
+                  href="mailto:cimaj.ecuador2025@hotmail.com"
+                  class="hover:text-[#Fdf5a6] transition-colors"
+                  >cimaj.ecuador2025@hotmail.com</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Reemplazo de Ubicación por Redes en Footer -->
+          <div>
+            <h4 class="text-silver font-serif font-bold mb-4">Síguenos</h4>
+            <p class="text-sm text-slate-400 leading-relaxed mb-4">
+              Únase a nuestra comunidad digital para recibir contenido de valor
+              jurídico.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://www.facebook.com/share/14gDs7LmGvP/"
+                target="_blank"
+                class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"
+                ><i class="fa-brands fa-facebook-f text-lg w-5 text-center"></i
+              ></a>
+              <a
+                href="https://www.instagram.com/cimaj_ecuador?igsh=MTA2aTQwMHh2aXBwbQ=="
+                target="_blank"
+                class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"
+                ><i class="fa-brands fa-instagram text-lg w-5 text-center"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@cimaj.ecuador?_r=1&_t=ZS-96agnjSJRzR"
+                target="_blank"
+                class="bg-black/30 p-3 rounded-full border border-white/10 text-slate-300 hover:text-[#0b0c10] hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300 shadow-lg"
+                ><i class="fa-brands fa-tiktok text-lg w-5 text-center"></i
+              ></a>
             </div>
-            <div class="border-t border-white/5 pt-8 flex justify-between text-xs text-slate-500">
-                <p>&copy; 2026 CIMAJ Corporación Legal.</p>
-            </div>
+          </div>
         </div>
+        <div
+          class="border-t border-white/5 pt-8 flex justify-between text-xs text-slate-500"
+        >
+          <p>&copy; 2026 CIMAJ Corporación Legal.</p>
+        </div>
+      </div>
     </footer>
 
     <!-- ==========================================
          MODAL DE INFORMACIÓN E IMAGEN (SERVICIOS Y ABOGADOS)
     ========================================== -->
-    <div id="info-modal" class="fixed inset-0 z-[999] bg-[#0b0c10]/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all">
-        <div class="glass-panel w-full max-w-4xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col md:flex-row slideDown border border-white/10">
-            <!-- Columna Izquierda: Imagen (NUEVO) -->
-            <div class="md:w-2/5 h-48 md:h-auto relative overflow-hidden">
-                <img id="info-modal-img" src="" alt="Información" class="w-full h-full object-cover">
-                <!-- Sombra para que se funda bien con el modal en móvil y desktop -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] md:bg-gradient-to-r via-transparent to-transparent"></div>
-            </div>
-            
-            <!-- Columna Derecha: Contenido -->
-            <div class="md:w-3/5 flex flex-col">
-                <div class="flex justify-between items-center p-6 border-b border-white/10 bg-[#050608]">
-                    <div>
-                        <h3 id="info-modal-title" class="text-silver font-serif font-bold text-2xl">Título</h3>
-                        <p id="info-modal-subtitle" class="text-[#C5A059] text-xs uppercase tracking-widest font-bold mt-1">Subtítulo</p>
-                    </div>
-                    <button onclick="closeInfoModal()" class="text-slate-400 hover:text-[#C5A059] transition-colors self-start"><i class="fa-solid fa-xmark text-2xl"></i></button>
-                </div>
-                <div class="p-8 bg-[#0b0c10] text-slate-300 font-light leading-relaxed max-h-[50vh] overflow-y-auto flex-grow" id="info-modal-desc">
-                    <!-- El contenido se inyectará por JS -->
-                </div>
-                <div class="p-6 bg-[#050608] border-t border-white/10 flex justify-end">
-                    <a href="https://wa.me/593998877398" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform">
-                        Consultar Caso <i class="fa-brands fa-whatsapp ml-2 text-lg"></i>
-                    </a>
-                </div>
-            </div>
+    <div
+      id="info-modal"
+      class="fixed inset-0 z-[999] bg-[#0b0c10]/95 backdrop-blur-xl hidden items-center justify-center p-4 transition-all"
+    >
+      <div
+        class="glass-panel w-full max-w-4xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(197,160,89,0.15)] relative flex flex-col md:flex-row slideDown border border-white/10"
+      >
+        <!-- Columna Izquierda: Imagen (NUEVO) -->
+        <div class="md:w-2/5 h-48 md:h-auto relative overflow-hidden">
+          <img
+            id="info-modal-img"
+            src=""
+            alt="Información"
+            class="w-full h-full object-cover"
+          />
+          <!-- Sombra para que se funda bien con el modal en móvil y desktop -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] md:bg-gradient-to-r via-transparent to-transparent"
+          ></div>
         </div>
+
+        <!-- Columna Derecha: Contenido -->
+        <div class="md:w-3/5 flex flex-col">
+          <div
+            class="flex justify-between items-center p-6 border-b border-white/10 bg-[#050608]"
+          >
+            <div>
+              <h3
+                id="info-modal-title"
+                class="text-silver font-serif font-bold text-2xl"
+              >
+                Título
+              </h3>
+              <p
+                id="info-modal-subtitle"
+                class="text-[#C5A059] text-xs uppercase tracking-widest font-bold mt-1"
+              >
+                Subtítulo
+              </p>
+            </div>
+            <button
+              onclick="closeInfoModal()"
+              class="text-slate-400 hover:text-[#C5A059] transition-colors self-start"
+            >
+              <i class="fa-solid fa-xmark text-2xl"></i>
+            </button>
+          </div>
+          <div
+            class="p-8 bg-[#0b0c10] text-slate-300 font-light leading-relaxed max-h-[50vh] overflow-y-auto flex-grow"
+            id="info-modal-desc"
+          >
+            <!-- El contenido se inyectará por JS -->
+          </div>
+          <div
+            class="p-6 bg-[#050608] border-t border-white/10 flex justify-end"
+          >
+            <a
+              href="https://wa.me/593998877398"
+              target="_blank"
+              class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform"
+            >
+              Consultar Caso <i class="fa-brands fa-whatsapp ml-2 text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- SCRIPTS CONTROLADORES -->
-    <script>
-        // === DATOS PARA LOS MODALES DE INFORMACIÓN CON IMÁGENES ===
-        const modalData = {
-            'carlos': {
-                title: 'Dr. Carlos Cisneros V.',
-                subtitle: 'CEO & Director Jurídico',
-                img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg',
-                desc: '<p class="mb-4 text-white">Especialista en investigación criminalística y estrategia penal con más de 15 años de trayectoria. Su enfoque combina la rigurosidad analítica con un liderazgo directivo excepcional.</p><p>Como fundador de CIMAJ, ha establecido un estándar de excelencia en la defensa técnica, logrando resultados determinantes en casos de alta complejidad a nivel nacional, siempre manteniendo un trato humano y cercano con cada cliente.</p>'
-            },
-            'luis': {
-                title: 'Abg. Luis Miguel Oña',
-                subtitle: 'Derecho Penal y Constitucional',
-                img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png',
-                desc: '<p class="mb-4 text-white">Abogado especialista en Derecho Penal y experto en Garantías Constitucionales y Derecho Público. Cuenta con una valiosa trayectoria como ex-colaborador de la Asamblea Nacional en la elaboración de proyectos de ley y procesos de fiscalización.</p><p>Ha logrado resultados altamente favorables en casos de relevancia nacional, destacándose por su meticulosa preparación argumentativa, su capacidad analítica en la revisión de expedientes y su contundencia en los tribunales, así como en la defensa de los derechos constitucionales de nuestros clientes.</p>'
-            },
-            'vivi': {
-                title: 'Viviana Echeverría',
-                subtitle: 'Mediadora Certificada',
-                img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg',
-                desc: '<p class="mb-4 text-white">Mediadora debidamente acreditada por el Consejo de la Judicatura (CNJ). Es especialista en la resolución alternativa de conflictos.</p><p>Su labor es fundamental en CIMAJ para evitar años de juicios y altos costos a nuestros clientes. A través del diálogo, la empatía y la neutralidad, facilita la construcción de acuerdos mutuos con plena validez legal, garantizando soluciones rápidas y confidenciales.</p>'
-            },
-            'civil': {
-                title: 'Civil y Notarial',
-                subtitle: 'Especialidad',
-                img: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800',
-                desc: '<p class="mb-4 text-white">Nuestra área Civil y Notarial se encarga de proteger su patrimonio y asegurar la validez de todos sus actos legales. Nos especializamos en brindar soluciones efectivas frente a conflictos entre particulares.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Cobro ágil de letras de cambio, pagarés y letras de crédito.</li><li>Redacción, revisión y legalización de contratos.</li><li>Procesos de desalojos y recuperación de inmuebles.</li><li>Trámites de escrituras, otorgamiento de poderes y declaraciones juramentadas.</li><li>Juicios en documentos y ejecución de deudas.</li></ul>'
-            },
-            'penal': {
-                title: 'Defensa Penal',
-                subtitle: 'Especialidad',
-                img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/penal%20civil.png',
-                desc: '<p class="mb-4 text-white">Contamos con un equipo de élite para la representación jurídica en materia penal. Entendemos que su libertad y honor están en juego, por lo que actuamos con inmediatez y contundencia.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Representación jurídica integral para víctimas y procesados.</li><li>Defensa técnica estratégica basada en investigación criminalística.</li><li>Presentación de apelaciones y recursos de casación o revisión.</li><li>Procedimientos de protección de derechos.</li><li>Elaboración, presentación y seguimiento de denuncias.</li></ul>'
-            },
-            'transito': {
-                title: 'Tránsito',
-                subtitle: 'Especialidad',
-                img: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=800',
-                desc: '<p class="mb-4 text-white">Brindamos asistencia legal inmediata y especializada ante cualquier siniestro o conflicto vial, buscando siempre proteger su libertad, su historial de conducción y su patrimonio.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Defensa en juicios por accidentes de tránsito (daños materiales, lesiones o fatalidades).</li><li>Mediación extrajudicial para reparación de daños.</li><li>Impugnación de citaciones y multas de tránsito.</li><li>Trámites para la liberación rápida de vehículos retenidos.</li><li>Procesos administrativos para la recuperación de puntos de licencia.</li></ul>'
-            },
-            'familia': {
-                title: 'Familia',
-                subtitle: 'Especialidad',
-                img: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=800',
-                desc: '<p class="mb-4 text-white">Tratamos los asuntos del núcleo familiar con la máxima sensibilidad, confidencialidad y rigor jurídico, priorizando siempre el bienestar de los menores y la paz familiar.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Fijación, aumento, rebaja y cobro de pensiones alimenticias.</li><li>Establecimiento y regulación de régimen de visitas y tenencia.</li><li>Juicios de divorcio por mutuo consentimiento y contenciosos.</li><li>Liquidación de sociedad conyugal.</li><li>Procesos integrales de mediación familiar para acuerdos amigables.</li></ul>'
-            },
-            'laboral': {
-                title: 'Laboral y Tributario',
-                subtitle: 'Especialidad',
-                img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=800',
-                desc: '<p class="mb-4 text-white">Asesoramos tanto a empleadores como a trabajadores para asegurar el cumplimiento de la ley, prevenir conflictos y resolver disputas con las instituciones reguladoras.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li>Defensa de derechos laborales (despidos intempestivos, vistos buenos, liquidaciones).</li><li>Asesoría y defensa en controversias tributarias ante el SRI.</li><li>Representación en procesos de conciliación y arbitraje.</li><li>Elaboración de contratos laborales y auditorías de cumplimiento.</li><li>Redacción y aprobación de reglamentos de orden interno empresarial.</li></ul>'
-            },
-            'mediacion': {
-                title: 'Mediación Certificada',
-                subtitle: 'Especialidad',
-                img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=800',
-                desc: '<p class="mb-4 text-white">La mediación es la vía del futuro. Le permite evitar años de desgaste emocional y altos costos judiciales mediante un proceso de diálogo asistido por nuestros profesionales avalados por el Consejo de la Judicatura.</p><ul class="list-disc pl-5 space-y-2 mt-4 text-sm"><li><strong class="text-[#C5A059]">Rapidez:</strong> Soluciones en semanas, no en años.</li><li><strong class="text-[#C5A059]">Economía:</strong> Significativamente más accesible que un juicio tradicional.</li><li><strong class="text-[#C5A059]">Confidencialidad absoluta:</strong> Lo tratado en mediación no es público ni puede ser usado en su contra.</li><li><strong class="text-[#C5A059]">Fuerza de Sentencia:</strong> El acta de mediación tiene la misma validez legal que una sentencia de un juez en última instancia.</li></ul>'
-            }
-        };
-
-        // Lógica de Modales de Información Dinámica
-        function openInfoModal(id) {
-            const data = modalData[id];
-            if(!data) return;
-            
-            document.getElementById('info-modal-title').innerText = data.title;
-            document.getElementById('info-modal-subtitle').innerText = data.subtitle;
-            document.getElementById('info-modal-desc').innerHTML = data.desc;
-            document.getElementById('info-modal-img').src = data.img;
-            
-            const modal = document.getElementById('info-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeInfoModal() {
-            const modal = document.getElementById('info-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Lógica del Carrusel del Hero
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = [document.getElementById('dot-0'), document.getElementById('dot-1'), document.getElementById('dot-2')];
-        const totalSlides = slides.length;
-        let slideInterval;
-
-        function updateCarousel(newIndex) {
-            slides[currentSlide].classList.remove('active');
-            slides[currentSlide].classList.add('exit');
-            dots[currentSlide].classList.remove('bg-[#C5A059]');
-            dots[currentSlide].classList.add('bg-white/30');
-            
-            const oldIndex = currentSlide;
-            setTimeout(() => {
-                slides[oldIndex].classList.remove('exit');
-            }, 1200);
-
-            currentSlide = newIndex;
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.remove('bg-white/30');
-            dots[currentSlide].classList.add('bg-[#C5A059]');
-        }
-
-        function nextSlide() {
-            updateCarousel((currentSlide + 1) % totalSlides);
-        }
-
-        function goToSlide(index) {
-            clearInterval(slideInterval);
-            if(index !== currentSlide) updateCarousel(index);
-            slideInterval = setInterval(nextSlide, 5500);
-        }
-
-        if(totalSlides > 0) {
-            slideInterval = setInterval(nextSlide, 5500);
-        }
-
-        // Navegación estilo SPA (Pestañas Ocultas)
-        function navigate(viewId) {
-            document.querySelectorAll('.view-section').forEach(section => {
-                section.classList.remove('view-active');
-            });
-            
-            document.getElementById('view-' + viewId).classList.add('view-active');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                if(btn.dataset.target === viewId) {
-                    btn.classList.add('text-[#C5A059]');
-                    btn.classList.remove('text-slate-300');
-                } else {
-                    btn.classList.remove('text-[#C5A059]');
-                    btn.classList.add('text-slate-300');
-                }
-            });
-
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
-            if (!menu.classList.contains('translate-x-full')) {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Menú Hamburguesa Móvil
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
-            
-            if (menu.classList.contains('translate-x-full')) {
-                menu.classList.remove('translate-x-full');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        }
-
-        // Efecto del Header al Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('main-header');
-            const topbar = document.getElementById('topbar');
-            
-            if (window.scrollY > 50) {
-                header.classList.add('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
-                header.classList.remove('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
-                if(topbar) {
-                    topbar.style.height = '0px';
-                    topbar.style.opacity = '0';
-                    topbar.style.paddingBottom = '0px';
-                    topbar.style.marginBottom = '0px';
-                }
-            } else {
-                header.classList.remove('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
-                header.classList.add('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
-                if(topbar) {
-                    topbar.style.height = 'auto';
-                    topbar.style.opacity = '1';
-                    topbar.style.paddingBottom = '0.5rem';
-                    topbar.style.marginBottom = '0.5rem';
-                }
-            }
-        });
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
