@@ -10,6 +10,9 @@
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- DOMPurify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -867,7 +870,7 @@
             
             document.getElementById('info-modal-title').innerText = data.title;
             document.getElementById('info-modal-subtitle').innerText = data.subtitle;
-            document.getElementById('info-modal-desc').innerHTML = data.desc;
+            document.getElementById('info-modal-desc').innerHTML = DOMPurify.sanitize(data.desc);
             document.getElementById('info-modal-img').src = data.img;
             
             const modal = document.getElementById('info-modal');
