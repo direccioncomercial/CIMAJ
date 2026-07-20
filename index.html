@@ -921,15 +921,21 @@
             slideInterval = setInterval(nextSlide, 5500);
         }
 
+        // Elementos cacheados para SPA y Menú Móvil
+        const viewSections = document.querySelectorAll('.view-section');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const mobileMenuEl = document.getElementById('mobile-menu');
+        const mobileIconEl = document.getElementById('mobile-icon');
+
         // Navegación estilo SPA (Pestañas Ocultas)
         function navigate(viewId) {
-            document.querySelectorAll('.view-section').forEach(section => {
+            viewSections.forEach(section => {
                 section.classList.remove('view-active');
             });
             
             document.getElementById('view-' + viewId).classList.add('view-active');
             
-            document.querySelectorAll('.nav-btn').forEach(btn => {
+            navBtns.forEach(btn => {
                 if(btn.dataset.target === viewId) {
                     btn.classList.add('text-[#C5A059]');
                     btn.classList.remove('text-slate-300');
@@ -939,12 +945,10 @@
                 }
             });
 
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
-            if (!menu.classList.contains('translate-x-full')) {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+            if (!mobileMenuEl.classList.contains('translate-x-full')) {
+                mobileMenuEl.classList.add('translate-x-full');
+                mobileIconEl.classList.remove('fa-xmark');
+                mobileIconEl.classList.add('fa-bars');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -952,17 +956,14 @@
 
         // Menú Hamburguesa Móvil
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
-            
-            if (menu.classList.contains('translate-x-full')) {
-                menu.classList.remove('translate-x-full');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
+            if (mobileMenuEl.classList.contains('translate-x-full')) {
+                mobileMenuEl.classList.remove('translate-x-full');
+                mobileIconEl.classList.remove('fa-bars');
+                mobileIconEl.classList.add('fa-xmark');
             } else {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+                mobileMenuEl.classList.add('translate-x-full');
+                mobileIconEl.classList.remove('fa-xmark');
+                mobileIconEl.classList.add('fa-bars');
             }
         }
 
