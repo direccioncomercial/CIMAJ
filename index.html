@@ -11,6 +11,9 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- DOMPurify for HTML sanitization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -345,46 +348,8 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Carlos -->
-                        <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
-                        <!-- Luis Miguel -->
-                        <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Penal y Constitucional</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
-                        <!-- Viviana -->
-                        <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                            <div class="aspect-[3/4] overflow-hidden relative">
-                                <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                            </div>
-                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                                <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
-                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
-                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                            </div>
-                        </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 team-grid-container">
+                        <!-- Dynamic team members will be injected here -->
                     </div>
                 </div>
             </div>
@@ -443,46 +408,8 @@
                     <h2 class="text-4xl md:text-5xl text-silver font-serif font-bold">Profesionales de Élite</h2>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Carlos -->
-                    <div onclick="openInfoModal('carlos')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg" alt="Carlos" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Dr. Carlos Cisneros V.</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">CEO & Director</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
-                    <!-- Luis Miguel -->
-                    <div onclick="openInfoModal('luis')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png" alt="Luis" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Abg. Luis Miguel Oña</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Der. Penal y Constitucional</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
-                    <!-- Viviana -->
-                    <div onclick="openInfoModal('vivi')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
-                        <div class="aspect-[3/4] overflow-hidden relative">
-                            <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg" alt="Viviana" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
-                            <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
-                        </div>
-                        <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
-                            <h4 class="text-xl text-white font-serif font-bold">Viviana Echeverría</h4>
-                            <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">Mediadora Certificada</p>
-                            <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
-                        </div>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 team-grid-container">
+                    <!-- Dynamic team members will be injected here -->
                 </div>
             </div>
         </section>
@@ -860,6 +787,44 @@
             }
         };
 
+        // Datos del equipo
+        const teamMembers = [
+            { id: 'carlos', img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/foto%20charlie.jpg', name: 'Dr. Carlos Cisneros V.', role: 'CEO & Director' },
+            { id: 'luis', img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/luismi.png', name: 'Abg. Luis Miguel Oña', role: 'Der. Penal y Constitucional' },
+            { id: 'vivi', img: 'https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/vivi.jpg', name: 'Viviana Echeverría', role: 'Mediadora Certificada' }
+        ];
+
+        // Función para renderizar los miembros del equipo
+        function renderTeamMembers() {
+            const containers = document.querySelectorAll('.team-grid-container');
+            containers.forEach(container => {
+                teamMembers.forEach(member => {
+                    const htmlString = `
+                        <div onclick="openInfoModal('${member.id}')" class="glass-panel cursor-pointer hover:border-[#C5A059]/50 transition-all duration-300 rounded-xl overflow-hidden shadow-lg group">
+                            <div class="aspect-[3/4] overflow-hidden relative">
+                                <img src="${member.img}" alt="${member.name}" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                                <div class="absolute inset-0 bg-white/0 group-hover:bg-black/20 transition-all duration-500 z-10 pointer-events-none"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0b0c10] via-transparent to-transparent z-20 pointer-events-none"></div>
+                            </div>
+                            <div class="p-6 relative z-30 -mt-16 flex flex-col items-start">
+                                <h4 class="text-xl text-white font-serif font-bold">${member.name}</h4>
+                                <p class="text-gold text-xs uppercase tracking-widest font-bold mb-3 mt-1">${member.role}</p>
+                                <p class="text-slate-300 text-sm font-light">Clic para ver perfil <i class="fa-solid fa-arrow-right ml-1 text-xs"></i></p>
+                            </div>
+                        </div>
+                    `;
+                    // Sanitize the HTML string using DOMPurify before setting it as innerHTML
+                    const sanitizedHTML = DOMPurify.sanitize(htmlString, { ADD_ATTR: ['onclick'] });
+                    const wrapper = document.createElement('div');
+                    wrapper.innerHTML = sanitizedHTML;
+                    container.appendChild(wrapper.firstElementChild);
+                });
+            });
+        }
+
+        // Llamar a la función cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', renderTeamMembers);
+
         // Lógica de Modales de Información Dinámica
         function openInfoModal(id) {
             const data = modalData[id];
@@ -867,7 +832,7 @@
             
             document.getElementById('info-modal-title').innerText = data.title;
             document.getElementById('info-modal-subtitle').innerText = data.subtitle;
-            document.getElementById('info-modal-desc').innerHTML = data.desc;
+            document.getElementById('info-modal-desc').innerHTML = DOMPurify.sanitize(data.desc);
             document.getElementById('info-modal-img').src = data.img;
             
             const modal = document.getElementById('info-modal');
