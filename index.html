@@ -967,28 +967,22 @@
         }
 
         // Efecto del Header al Scroll
+        const solidClasses = ['bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl'];
+        const gradientClasses = ['bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent'];
+
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             const topbar = document.getElementById('topbar');
+            const isScrolled = window.scrollY > 50;
             
-            if (window.scrollY > 50) {
-                header.classList.add('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
-                header.classList.remove('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
-                if(topbar) {
-                    topbar.style.height = '0px';
-                    topbar.style.opacity = '0';
-                    topbar.style.paddingBottom = '0px';
-                    topbar.style.marginBottom = '0px';
-                }
-            } else {
-                header.classList.remove('bg-[#0b0c10]/95', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'shadow-2xl');
-                header.classList.add('bg-gradient-to-b', 'from-[#0b0c10]', 'to-transparent');
-                if(topbar) {
-                    topbar.style.height = 'auto';
-                    topbar.style.opacity = '1';
-                    topbar.style.paddingBottom = '0.5rem';
-                    topbar.style.marginBottom = '0.5rem';
-                }
+            solidClasses.forEach(c => header.classList.toggle(c, isScrolled));
+            gradientClasses.forEach(c => header.classList.toggle(c, !isScrolled));
+
+            if (topbar) {
+                topbar.style.height = isScrolled ? '0px' : 'auto';
+                topbar.style.opacity = isScrolled ? '0' : '1';
+                topbar.style.paddingBottom = isScrolled ? '0px' : '0.5rem';
+                topbar.style.marginBottom = isScrolled ? '0px' : '0.5rem';
             }
         });
     </script>
