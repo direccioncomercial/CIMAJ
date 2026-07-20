@@ -955,15 +955,9 @@
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('mobile-icon');
             
-            if (menu.classList.contains('translate-x-full')) {
-                menu.classList.remove('translate-x-full');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
+            menu.classList.toggle('translate-x-full');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
         }
 
         // Efecto del Header al Scroll
