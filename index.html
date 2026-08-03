@@ -921,15 +921,21 @@
             slideInterval = setInterval(nextSlide, 5500);
         }
 
+        // DOM element caches
+        const domViewSections = document.querySelectorAll('.view-section');
+        const domNavBtns = document.querySelectorAll('.nav-btn');
+        const domMobileMenu = document.getElementById('mobile-menu');
+        const domMobileIcon = document.getElementById('mobile-icon');
+
         // Navegación estilo SPA (Pestañas Ocultas)
         function navigate(viewId) {
-            document.querySelectorAll('.view-section').forEach(section => {
+            domViewSections.forEach(section => {
                 section.classList.remove('view-active');
             });
             
             document.getElementById('view-' + viewId).classList.add('view-active');
             
-            document.querySelectorAll('.nav-btn').forEach(btn => {
+            domNavBtns.forEach(btn => {
                 if(btn.dataset.target === viewId) {
                     btn.classList.add('text-[#C5A059]');
                     btn.classList.remove('text-slate-300');
@@ -939,12 +945,10 @@
                 }
             });
 
-            const menu = document.getElementById('mobile-menu');
-            const icon = document.getElementById('mobile-icon');
-            if (!menu.classList.contains('translate-x-full')) {
-                menu.classList.add('translate-x-full');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
+            if (!domMobileMenu.classList.contains('translate-x-full')) {
+                domMobileMenu.classList.add('translate-x-full');
+                domMobileIcon.classList.remove('fa-xmark');
+                domMobileIcon.classList.add('fa-bars');
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
