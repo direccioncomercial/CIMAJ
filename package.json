@@ -1,0 +1,17 @@
+{
+  "name": "cimaj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^24.1.1",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
