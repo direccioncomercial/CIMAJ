@@ -124,17 +124,147 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050608; }
         ::-webkit-scrollbar-thumb { background: #C5A059; border-radius: 4px; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+        /* === JUDGE AI ASSISTANT (ESTÁNDAR EV/SER EN COLORES CIMAJ) === */
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatAvatar 3.5s ease-in-out infinite;
+        }
+        @keyframes glowGoldLatency {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.45)); }
+            50% { filter: drop-shadow(0 0 24px rgba(197, 160, 89, 0.85)); }
+        }
+        .animate-glow-gold {
+            animation: glowGoldLatency 4s ease-in-out infinite;
+        }
+        .shadow-neon-gold {
+            box-shadow: 0 8px 28px -4px rgba(197, 160, 89, 0.4), 0 4px 12px -2px rgba(0, 0, 0, 0.6);
+        }
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.85) translateY(15px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-pop-in {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .judge-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: #111622;
+            color: #f8f9fa;
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .judge-chip:hover {
+            background: linear-gradient(135deg, #C5A059 0%, #Fdf5a6 50%, #B28838 100%);
+            color: #0b0c10;
+            border-color: #C5A059;
+            transform: translateY(-1px);
+        }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #C5A059;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
     </style>
 </head>
 <body class="selection:bg-[#C5A059] selection:text-[#0b0c10] flex flex-col">
 
     <!-- ==========================================
-         BOTÓN FLOTANTE WHATSAPP (DERECHA)
+         JUDGE MOVIBLE Y FUTURISTA (COLORES CORPORATIVOS CIMAJ)
     ========================================== -->
-    <a href="https://wa.me/593998877398" target="_blank" class="fixed bottom-8 right-6 z-[100] glass-panel border border-[#C5A059]/40 rounded-full px-5 py-3 flex items-center space-x-3 hover:scale-105 hover:border-[#C5A059] transition-all duration-300 shadow-[0_0_20px_rgba(197,160,89,0.2)] hover:shadow-[0_0_30px_rgba(197,160,89,0.5)] group" rel="noopener noreferrer">
-        <span class="text-white font-bold text-xs uppercase tracking-widest pl-2 group-hover:text-[#Fdf5a6] transition-colors">Contáctanos</span>
-        <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/CIMAJ%200825%20Logotipo%20V%20Blanco.png" alt="CIMAJ Logo Vertical" class="h-8 w-auto group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all duration-300" />
-    </a>
+    <div id="judge-floating-container" class="fixed z-[900] flex flex-col items-center cursor-pointer group select-none touch-none" style="bottom: 30px; right: 30px;">
+        <!-- Globo de Texto Superior Dinámico -->
+        <div id="judge-speech-bubble" onclick="if(!hasMoved) toggleChat();" class="bg-[#0b0c10]/95 backdrop-blur-md px-4 py-2 rounded-xl shadow-neon-gold border border-[#C5A059]/60 mb-2 animate-bounce whitespace-nowrap relative flex items-center gap-2">
+           <span class="w-2 h-2 rounded-full bg-[#C5A059] animate-ping"></span>
+           <span id="judge-bubble-text" class="text-xs font-bold text-[#Fdf5a6] uppercase tracking-wider font-serif">
+             ¡Hola! Soy Judge. ¿Hablamos?
+           </span>
+        </div>
+        
+        <!-- Contenedor del Avatar (Aplica el Brillo Dorado Imperial) -->
+        <div class="w-[95px] h-auto relative animate-glow-gold">
+           <img 
+             src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/judge_avatar.png" 
+             id="judge-avatar-trigger"
+             class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-300 animate-float group-hover:scale-105" 
+             alt="Consultor Jurídico IA Judge" 
+             loading="lazy" decoding="async">
+        </div>
+    </div>
+
+    <!-- VENTANA DE CHAT IA CON MOTOR CONVERSACIONAL "JUDGE" -->
+    <div id="ai-chat-window" class="fixed bottom-24 right-4 md:right-8 w-[92vw] max-w-[400px] bg-[#0b0c10] rounded-3xl shadow-neon-gold flex flex-col transition-all duration-300 transform scale-0 origin-bottom-right z-[950] hidden border border-[#C5A059]/50 overflow-hidden" style="height: 560px; max-height: 82vh;">
+        <!-- Cabecera de Judge -->
+        <div class="bg-gradient-to-r from-[#050608] via-[#141821] to-[#2a2212] p-4 px-5 flex justify-between items-center border-b border-[#C5A059]/40">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/judge_avatar.png" alt="Judge Avatar" class="w-12 h-12 object-contain rounded-full bg-[#1a1e29] p-0.5 border border-[#C5A059]/60" loading="lazy" decoding="async">
+                    <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-[#0b0c10] rounded-full" title="En línea"></span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h4 class="text-white font-serif font-bold text-sm text-nowrap tracking-wide">Asesor Judge</h4>
+                        <span class="bg-gold-gradient text-[#0b0c10] text-[9px] font-extrabold px-2 py-0.5 rounded-full uppercase">IA Jurídica</span>
+                    </div>
+                    <p class="text-[10px] text-[#C5A059] font-bold uppercase tracking-widest leading-none mt-1">Inteligencia Legal & Financiera CIMAJ</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1.5">
+                <a href="https://wa.me/593998877398?text=Hola%20CIMAJ,%20vengo%20del%20asistente%20Judge%20y%20requiero%20asistencia%20jur%C3%ADdica" target="_blank" rel="noopener noreferrer" class="bg-gold-gradient text-[#0b0c10] text-[10px] font-extrabold px-2.5 py-1.5 rounded-full transition transform hover:scale-105 flex items-center gap-1 shadow-md" title="Hablar por WhatsApp"><i class="fa-brands fa-whatsapp text-xs"></i> <span class="hidden sm:inline">WhatsApp</span></a>
+                <button onclick="resetJudgeChat()" class="text-slate-400 hover:text-[#C5A059] transition p-1.5" title="Reiniciar conversación"><i class="fa-solid fa-rotate-right text-sm"></i></button>
+                <button onclick="toggleChat()" class="text-slate-400 hover:text-[#C5A059] transition p-1.5" title="Cerrar"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+        </div>
+
+        <!-- Historial de Mensajes -->
+        <ul id="chat-box" class="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-[#0b0c10] to-[#121620] scrollbar-hide">
+            <!-- El contenido inicial se inyecta dinámicamente -->
+        </ul>
+
+        <!-- Barra de Sugerencias Rápidas Persistentes -->
+        <div class="px-4 py-2 bg-[#08090d] border-t border-white/10 flex gap-2 overflow-x-auto scrollbar-hide">
+            <button onclick="triggerQuickIntent('urgencia')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-scale-balanced text-[#C5A059]"></i> Evaluar mi Caso</button>
+            <button onclick="triggerQuickIntent('agendar')" class="judge-chip whitespace-nowrap"><i class="fa-brands fa-whatsapp text-[#C5A059]"></i> Agendar Cita</button>
+            <button onclick="triggerQuickIntent('faq')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-circle-question text-[#C5A059]"></i> Preguntas Frecuentes</button>
+            <button onclick="triggerQuickIntent('penal')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-gavel text-[#C5A059]"></i> Defensa Penal</button>
+            <button onclick="triggerQuickIntent('mediacion')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-handshake text-[#C5A059]"></i> Mediación CNJ</button>
+            <button onclick="triggerQuickIntent('civil')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-file-signature text-[#C5A059]"></i> Civil y Cobranzas</button>
+            <button onclick="triggerQuickIntent('transito')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-car-burst text-[#C5A059]"></i> Tránsito</button>
+            <button onclick="triggerQuickIntent('familia')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-people-roof text-[#C5A059]"></i> Familia</button>
+            <button onclick="triggerQuickIntent('laboral')" class="judge-chip whitespace-nowrap"><i class="fa-solid fa-briefcase text-[#C5A059]"></i> Laboral y SRI</button>
+        </div>
+
+        <!-- Input de Chat -->
+        <div class="p-3.5 bg-[#050608] border-t border-white/10">
+            <form onsubmit="event.preventDefault(); handleChat();" class="flex items-center gap-2 bg-[#121620] rounded-full px-4 py-2.5 border border-[#C5A059]/30 focus-within:border-[#C5A059] focus-within:ring-2 focus-within:ring-[#C5A059]/20 transition-all">
+                <input id="chat-input" type="text" autocomplete="off" class="flex-1 bg-transparent border-none outline-none text-sm font-medium text-white placeholder-slate-400" placeholder="Escribe tu consulta jurídica a Judge...">
+                <button type="submit" class="w-9 h-9 rounded-full bg-gold-gradient text-[#0b0c10] flex items-center justify-center hover:shadow-neon-gold transition transform hover:scale-105" aria-label="Enviar">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- ==========================================
          HEADER / NAVBAR
@@ -795,7 +925,10 @@
                 <div class="p-8 bg-[#0b0c10] text-slate-300 font-light leading-relaxed max-h-[50vh] overflow-y-auto flex-grow" id="info-modal-desc">
                     <!-- El contenido se inyectará por JS -->
                 </div>
-                <div class="p-6 bg-[#050608] border-t border-white/10 flex justify-end">
+                <div class="p-6 bg-[#050608] border-t border-white/10 flex flex-wrap gap-3 justify-end">
+                    <button onclick="closeInfoModal(); askJudgeFromPage('Deseo asesoría sobre ' + document.getElementById('info-modal-title').innerText);" class="border border-[#C5A059] text-[#Fdf5a6] hover:bg-[#C5A059] hover:text-[#0b0c10] px-5 py-3 rounded-lg font-bold text-xs uppercase tracking-widest transition-all">
+                        <i class="fa-solid fa-scale-balanced mr-2"></i> Preguntar a Judge
+                    </button>
                     <a href="https://wa.me/593998877398" target="_blank" class="bg-gold-gradient text-[#0b0c10] px-6 py-3 rounded-lg font-bold text-xs uppercase tracking-widest hover:scale-105 transition-transform" rel="noopener noreferrer">
                         Consultar Caso <i class="fa-brands fa-whatsapp ml-2 text-lg"></i>
                     </a>
@@ -952,6 +1085,377 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ==========================================
+        // MOTOR CONVERSACIONAL Y MOVIMIENTO 60 FPS DE "JUDGE" (CIMAJ)
+        // ==========================================
+        const JUDGE_AVATAR_URL = "https://raw.githubusercontent.com/direccioncomercial/CIMAJ/main/judge_avatar.png";
+        const judgeContainer = document.getElementById('judge-floating-container');
+        let isDragging = false;
+        let startX, startY, initialX, initialY;
+        let hasMoved = false;
+        let dragRafId = null;
+
+        judgeContainer.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+        judgeContainer.addEventListener('touchstart', (e) => startDragging(e.touches[0]), { passive: true });
+        document.addEventListener('touchmove', (e) => drag(e.touches[0]), { passive: true });
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            isDragging = true;
+            hasMoved = false;
+            startX = e.clientX;
+            startY = e.clientY;
+            initialX = judgeContainer.offsetLeft;
+            initialY = judgeContainer.offsetTop;
+            judgeContainer.style.transition = 'none';
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+                hasMoved = true;
+            }
+            if (!hasMoved) return;
+
+            if (dragRafId) cancelAnimationFrame(dragRafId);
+            dragRafId = requestAnimationFrame(() => {
+                const maxX = window.innerWidth - judgeContainer.offsetWidth - 10;
+                const maxY = window.innerHeight - judgeContainer.offsetHeight - 10;
+                const newX = Math.max(10, Math.min(initialX + dx, maxX));
+                const newY = Math.max(10, Math.min(initialY + dy, maxY));
+
+                judgeContainer.style.left = newX + 'px';
+                judgeContainer.style.top = newY + 'px';
+                judgeContainer.style.bottom = 'auto';
+                judgeContainer.style.right = 'auto';
+            });
+        }
+
+        function stopDragging() {
+            if (!isDragging) return;
+            isDragging = false;
+            judgeContainer.style.transition = 'all 0.25s cubic-bezier(0.22, 1, 0.36, 1)';
+        }
+
+        window.addEventListener('resize', () => {
+            if (judgeContainer.style.left && judgeContainer.style.left !== 'auto') {
+                const maxX = window.innerWidth - judgeContainer.offsetWidth - 10;
+                const maxY = window.innerHeight - judgeContainer.offsetHeight - 10;
+                judgeContainer.style.left = Math.max(10, Math.min(judgeContainer.offsetLeft, maxX)) + 'px';
+                judgeContainer.style.top = Math.max(10, Math.min(judgeContainer.offsetTop, maxY)) + 'px';
+            }
+        });
+
+        const judgeRotatingGreetings = [
+            "¡Hola! Soy Judge. ¿Hablamos?",
+            "⚖️ ¿Necesitas Defensa Penal?",
+            "🤝 Mediación con validez de sentencia",
+            "🚗 Asistencia en Siniestros de Tránsito",
+            "🏛️ Derecho Civil, Familia y Laboral",
+            "📅 Consulta con nuestros juristas"
+        ];
+        let judgeGreetingIdx = 0;
+        setInterval(() => {
+            const win = document.getElementById('ai-chat-window');
+            const bubbleText = document.getElementById('judge-bubble-text');
+            if (bubbleText && win && win.classList.contains('hidden')) {
+                judgeGreetingIdx = (judgeGreetingIdx + 1) % judgeRotatingGreetings.length;
+                bubbleText.style.opacity = '0';
+                setTimeout(() => {
+                    bubbleText.innerText = judgeRotatingGreetings[judgeGreetingIdx];
+                    bubbleText.style.transition = 'opacity 0.3s ease';
+                    bubbleText.style.opacity = '1';
+                }, 250);
+            }
+        }, 7000);
+
+        document.getElementById('judge-avatar-trigger').onclick = () => {
+            if (!hasMoved) toggleChat();
+        };
+
+        const judgeKnowledgeBase = {
+            welcome: {
+                text: `"Bienvenido a <strong>CIMAJ</strong> (Corporación de Indagación, Mediación, Asesoría Jurídica y Financiera). Soy <strong>Judge</strong>, tu asesor jurídico virtual.<br><br>Protegemos tu libertad, tu patrimonio y tu tranquilidad con rigor técnico y confidencialidad absoluta. ¿En qué materia requieres defensa o asesoría hoy?"`,
+                actions: [
+                    { label: "⚖️ Defensa Penal y Criminalística", intent: "penal" },
+                    { label: "🤝 Mediación Certificada CNJ", intent: "mediacion" },
+                    { label: "📜 Civil, Notarial y Cobro de Deudas", intent: "civil" },
+                    { label: "🚗 Accidentes e Infracciones de Tránsito", intent: "transito" },
+                    { label: "👨‍👩‍👧 Derecho de Familia", intent: "familia" },
+                    { label: "💼 Laboral, Tributario (SRI) y Empresas", intent: "laboral" },
+                    { label: "🚨 Tengo una Urgencia Legal", intent: "urgencia" }
+                ]
+            },
+            penal: {
+                text: `"En <strong>Defensa Penal e Investigación Criminalística</strong> actuamos con inmediatez bajo el liderazgo del <strong>Dr. Carlos Cisneros V.</strong> (CEO) y el <strong>Abg. Luis Miguel Oña</strong>:<br><br>• Representación integral para víctimas y procesados.<br>• Estrategia penal respaldada en investigación criminalística.<br>• Audiencias de flagrancia, apelaciones, casación y garantías constitucionales.<br>• Elaboración e impulso de denuncias en Fiscalía.<br><br>¿Cómo deseas proceder?"`,
+                actions: [
+                    { label: "🔍 Ver Ficha de Defensa Penal", action: "openInfoModal('penal')" },
+                    { label: "👔 Perfil Dr. Carlos Cisneros", action: "openInfoModal('carlos')" },
+                    { label: "📲 Asistencia Penal en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20habl%C3%A9%20con%20Judge%20y%20requiero%20asistencia%20en%20Defensa%20Penal" }
+                ]
+            },
+            mediacion: {
+                text: `"Con nuestra <strong>Mediación Certificada</strong> (avalada por el Consejo de la Judicatura y liderada por <strong>Viviana Echeverría</strong>), resuelves conflictos en semanas en lugar de años:<br><br>• <strong>Fuerza de Sentencia:</strong> El Acta de Mediación tiene la misma validez que un fallo judicial.<br>• <strong>Confidencialidad Total</strong> y ahorro significativo frente a un juicio.<br>• Ideal para acuerdos comerciales, deudas, tránsito, inquilinato y familia.<br><br>¿Deseas agendar una audiencia de mediación?"`,
+                actions: [
+                    { label: "🤝 Ver Ficha de Mediación", action: "openInfoModal('mediacion')" },
+                    { label: "👩‍⚖️ Perfil Viviana Echeverría", action: "openInfoModal('vivi')" },
+                    { label: "📲 Solicitar Mediación en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20convers%C3%A9%20con%20Judge%20y%20deseo%20informaci%C3%B3n%20sobre%20Mediaci%C3%B3n%20Certificada" }
+                ]
+            },
+            civil: {
+                text: `"Blindamos tus activos y recuperamos tu cartera en el área <strong>Civil, Financiera y Notarial</strong>:<br><br>• <strong>Cobro Efectivo:</strong> Ejecución de letras de cambio, pagarés y facturas.<br>• <strong>Contratos y Escrituras:</strong> Redacción, revisión, poderes y declaraciones juramentadas.<br>• <strong>Inmuebles:</strong> Desalojos, prescripción adquisitiva y litigios civiles.<br><br>¿Necesitas cobrar una deuda o blindar un contrato?"`,
+                actions: [
+                    { label: "📜 Ver Ficha Civil y Notarial", action: "openInfoModal('civil')" },
+                    { label: "📲 Consultar Caso Civil en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20habl%C3%A9%20con%20Judge%20y%20requiero%20asesor%C3%ADa%20en%20Derecho%20Civil%20/%20Cobro%20de%20Deudas" }
+                ]
+            },
+            transito: {
+                text: `"Brindamos respuesta jurídica inmediata ante cualquier <strong>Siniestro o Infracción de Tránsito</strong>:<br><br>• Defensa técnica en accidentes de tránsito (daños materiales o lesiones).<br>• Trámites ágiles para <strong>liberación de vehículos retenidos</strong>.<br>• Impugnación de citaciones/multas y recuperación de puntos.<br>• Mediación extrajudicial por daños viales.<br><br>¿Requieres asistencia vial jurídica ahora?"`,
+                actions: [
+                    { label: "🚗 Ver Ficha de Tránsito", action: "openInfoModal('transito')" },
+                    { label: "📲 Asistencia de Tránsito en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20convers%C3%A9%20con%20Judge%20y%20necesito%20asistencia%20legal%20en%20Tr%C3%A1nsito" }
+                ]
+            },
+            familia: {
+                text: `"Atendemos asuntos de <strong>Derecho de Familia</strong> con total reserva, sensibilidad y firmeza legal:<br><br>• Fijación, incidente de aumento o rebaja y cobro de <strong>pensiones alimenticias</strong>.<br>• Tenencia, patria potestad y regulación de <strong>régimen de visitas</strong>.<br>• Divorcios por mutuo consentimiento o contenciosos y liquidación de sociedad conyugal.<br><br>¿Cómo podemos ayudarte hoy?"`,
+                actions: [
+                    { label: "👨‍👩‍👧 Ver Ficha de Familia", action: "openInfoModal('familia')" },
+                    { label: "📲 Consulta de Familia en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20habl%C3%A9%20con%20Judge%20y%20deseo%20asesor%C3%ADa%20en%20Derecho%20de%20Familia" }
+                ]
+            },
+            laboral: {
+                text: `"Asesoramos a empresas y trabajadores en materia <strong>Laboral, Tributaria (SRI) y Corporativa</strong>:<br><br>• Defensa ante despidos intempestivos, vistos buenos, actas de finiquito y liquidaciones.<br>• Elaboración de contratos y <strong>Reglamentos Internos de Trabajo</strong>.<br>• Defensa y reclamos tributarios ante el <strong>SRI</strong>.<br><br>¿Representas a una empresa o requieres defensa como trabajador?"`,
+                actions: [
+                    { label: "💼 Ver Ficha Laboral y Tributaria", action: "openInfoModal('laboral')" },
+                    { label: "📲 Consulta Laboral / SRI en WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20habl%C3%A9%20con%20Judge%20y%20requiero%20asesor%C3%ADa%20Laboral%20o%20Tributaria" }
+                ]
+            },
+            urgencia: {
+                text: `"En <strong>CIMAJ</strong> clasificamos tu requerimiento para asignarte de inmediato al jurista especialista.<br><br><strong>¿Cuál es la naturaleza de tu caso?</strong>"`,
+                actions: [
+                    { label: "🚨 Urgencia Penal / Flagrancia / Tránsito", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20habl%C3%A9%20con%20Judge%20y%20tengo%20una%20URGENCIA%20legal%20(Penal%20/%20Tr%C3%A1nsito)" },
+                    { label: "🤝 Quiero Resolver un Conflicto por Mediación", intent: "mediacion" },
+                    { label: "💰 Cobro de Pagarés, Letras o Deudas", intent: "civil" },
+                    { label: "🏢 Asesoría Jurídica para mi Empresa", intent: "laboral" },
+                    { label: "📅 Agendar Consulta Jurídica", intent: "agendar" }
+                ]
+            },
+            faq: {
+                text: `"Respuestas a las <strong>Preguntas Frecuentes (FAQ)</strong> en <strong>CIMAJ</strong>:<br><br>1️⃣ <strong>¿Qué validez tiene un Acta de Mediación en CIMAJ?</strong> Tiene fuerza de sentencia ejecutoriada de última instancia (avalada por el Consejo de la Judicatura).<br>2️⃣ <strong>¿Atienden emergencias penales y de tránsito?</strong> Sí, contamos con patrocinio inmediato para audiencias de flagrancia, peritajes criminalísticos y liberación vehicular.<br>3️⃣ <strong>¿Cómo se manejan los honorarios?</strong> Evaluamos la viabilidad jurídica de tu caso con total transparencia y estructuramos planes de patrocinio adaptados a cada etapa procesal."`,
+                actions: [
+                    { label: "⚖️ Evaluar mi Caso Ahora", intent: "urgencia" },
+                    { label: "📅 Agendar con el Directorio", intent: "agendar" },
+                    { label: "📖 Ver Revista CIMAJ", action: "navigate('revista'); toggleChat();" }
+                ]
+            },
+            agendar: {
+                text: `"Nuestro equipo directivo liderado por el <strong>Dr. Carlos Cisneros V.</strong>, el <strong>Abg. Luis Miguel Oña</strong> y <strong>Viviana Echeverría</strong> está listo para recibir tu caso con absoluta reserva:<br><br>• <strong>WhatsApp Jurídico Directo:</strong> 099 887 7398<br>• <strong>Correo Corporativo:</strong> cimaj.ecuador2025@hotmail.com<br><br>Selecciona una opción para iniciar:"`,
+                actions: [
+                    { label: "📲 Agendar Consulta por WhatsApp", url: "https://wa.me/593998877398?text=Hola%20CIMAJ,%20convers%C3%A9%20con%20Judge%20y%20deseo%20agendar%20una%20consulta%20jur%C3%ADdica" },
+                    { label: "👔 Conocer a la Directiva", action: "navigate('equipo'); toggleChat();" },
+                    { label: "✉️ Enviar Correo", url: "mailto:cimaj.ecuador2025@hotmail.com" }
+                ]
+            }
+        };
+
+        function escapeJudgeHTML(str) {
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function detectJudgeIntent(rawText) {
+            const text = rawText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const safeRaw = escapeJudgeHTML(rawText);
+
+            const matched = [];
+            if (/(penal|delito|denuncia|fiscalia|carcel|detenido|flagrancia|criminalistica|carlos|luis|constitucional|estafa|robo)/.test(text)) matched.push("penal");
+            if (/(mediacion|mediador|acuerdo|conciliacion|viviana|cnj|judicatura|amistoso)/.test(text)) matched.push("mediacion");
+            if (/(civil|deuda|pagare|letra de cambio|cobro|cobranza|contrato|escritura|notaria|desalojo|inmueble|propiedad|poder)/.test(text)) matched.push("civil");
+            if (/(transito|accidente|choque|multa|citacion|vehiculo retenido|patio|licencia|puntos|ant|siniestro)/.test(text)) matched.push("transito");
+            if (/(familia|alimento|pension|divorcio|tenencia|visita|hijo|conyugal|herencia)/.test(text)) matched.push("familia");
+            if (/(laboral|trabajo|despido|liquidacion|visto bueno|sri|tributario|impuesto|empresa|reglamento|finiquito)/.test(text)) matched.push("laboral");
+
+            if (matched.length > 1) {
+                const names = {
+                    penal: "<strong>Defensa Penal e Investigación Criminalística</strong>",
+                    mediacion: "<strong>Mediación Certificada (CNJ)</strong>",
+                    civil: "<strong>Derecho Civil, Notarial y Cobranzas</strong>",
+                    transito: "<strong>Derecho de Tránsito y Siniestros</strong>",
+                    familia: "<strong>Derecho de Familia</strong>",
+                    laboral: "<strong>Derecho Laboral y Tributario (SRI)</strong>"
+                };
+                const listStr = matched.map(k => "• " + names[k]).join("<br>");
+                const acts = matched.map(k => judgeKnowledgeBase[k].actions[0]);
+                acts.push({
+                    label: "📲 Consultar Caso Integral en WhatsApp",
+                    url: `https://wa.me/593998877398?text=${encodeURIComponent('Hola CIMAJ, conversé con Judge sobre mi caso (' + rawText + ') y requiero patrocinio jurídico.')}`
+                });
+                return {
+                    text: `"He analizado tu consulta y veo que involucra varias áreas jurídicas en las que <strong>CIMAJ</strong> cuenta con especialistas:<br><br>${listStr}<br><br>Podemos asignarte una mesa jurídica integral para proteger tus derechos en todos los frentes:"`,
+                    actions: acts
+                };
+            }
+
+            if (matched.length === 1) return judgeKnowledgeBase[matched[0]];
+            if (/(urgencia|urgente|emergencia|ayuda|evaluar|caso|honorario|costo|precio|cuanto|cotiza)/.test(text)) return judgeKnowledgeBase.urgencia;
+            if (/(pregunta|frecuente|faq|duda|validez|tiempo|sentencia)/.test(text)) return judgeKnowledgeBase.faq;
+            if (/(agenda|cita|reunion|contacto|telefono|whatsapp|correo|email|ubicacion|abogado|doctor|director)/.test(text)) return judgeKnowledgeBase.agendar;
+            if (/(hola|buenos dias|buenas tardes|buenas noches|saludos|hey|que tal|quien eres|judge)/.test(text)) {
+                return {
+                    text: `"¡Saludos! Soy <strong>Judge</strong>, tu asistente jurídico de <strong>CIMAJ</strong>. Estoy entrenado para orientarte en <strong>Defensa Penal, Mediación Certificada (con validez de sentencia), Derecho Civil y Cobranzas, Tránsito, Familia y Derecho Laboral/Tributario</strong>.<br><br>¿En qué área legal necesitas respaldo hoy?"`,
+                    actions: [
+                        { label: "⚖️ Defensa Penal / Tránsito", intent: "penal" },
+                        { label: "🤝 Mediación Certificada CNJ", intent: "mediacion" },
+                        { label: "📜 Civil, Deudas y Contratos", intent: "civil" },
+                        { label: "👨‍👩‍👧 Familia / 💼 Laboral", intent: "familia" },
+                        { label: "📅 Hablar con un Abogado", intent: "agendar" }
+                    ]
+                };
+            }
+
+            return {
+                text: `"He registrado los detalles de tu consulta sobre: <em>'${safeRaw}'</em>.<br><br>En <strong>CIMAJ</strong> tratamos cada caso con estricta confidencialidad profesional. ¿Deseas enviar tu consulta directamente al WhatsApp de nuestra dirección jurídica para una evaluación inmediata?"`,
+                actions: [
+                    { label: "📲 Enviar mi caso por WhatsApp", url: `https://wa.me/593998877398?text=${encodeURIComponent('Hola CIMAJ, conversé con Judge sobre mi caso: "' + rawText + '" y deseo asesoría jurídica.')}` },
+                    { label: "⚖️ Clasificar mi Caso", intent: "urgencia" },
+                    { label: "📅 Agendar Cita", intent: "agendar" },
+                    { label: "🔄 Ver Especialidades", intent: "welcome" }
+                ]
+            };
+        }
+
+        function renderJudgeMessage(responseObj) {
+            const chatBox = document.getElementById('chat-box');
+            let actionsHTML = '';
+            if (responseObj.actions && responseObj.actions.length > 0) {
+                actionsHTML = `<div class="mt-3 pt-3 border-t border-white/10 flex flex-wrap gap-1.5">`;
+                responseObj.actions.forEach(act => {
+                    if (act.intent) {
+                        actionsHTML += `<button onclick="triggerQuickIntent('${act.intent}')" class="judge-chip">${act.label}</button>`;
+                    } else if (act.action) {
+                        actionsHTML += `<button onclick="${act.action}" class="judge-chip">${act.label}</button>`;
+                    } else if (act.url) {
+                        actionsHTML += `<a href="${act.url}" target="_blank" class="judge-chip !bg-gold-gradient !text-[#0b0c10] !font-extrabold !border-[#C5A059]" rel="noopener noreferrer">${act.label}</a>`;
+                    }
+                });
+                actionsHTML += `</div>`;
+            }
+
+            const li = document.createElement('li');
+            li.className = 'flex justify-start items-end gap-2 animate-pop-in';
+            li.innerHTML = `
+                <img src="${JUDGE_AVATAR_URL}" alt="Judge" class="w-7 h-7 rounded-full object-contain bg-[#1a1e29] p-0.5 border border-[#C5A059]/50 flex-shrink-0 mb-1" loading="lazy" decoding="async">
+                <div class="bg-[#161b26] text-slate-200 p-4 rounded-2xl rounded-bl-none shadow-md text-xs md:text-sm border border-[#C5A059]/25 max-w-[88%] leading-relaxed">
+                    <div>${responseObj.text}</div>
+                    ${actionsHTML}
+                </div>
+            `;
+            chatBox.appendChild(li);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function showJudgeTypingAndReply(responseObj) {
+            const chatBox = document.getElementById('chat-box');
+            const typingId = 'judge-typing-' + Date.now();
+            const typingLi = document.createElement('li');
+            typingLi.id = typingId;
+            typingLi.className = 'flex justify-start items-center gap-2';
+            typingLi.innerHTML = `
+                <img src="${JUDGE_AVATAR_URL}" alt="Judge" class="w-7 h-7 rounded-full object-contain bg-[#1a1e29] p-0.5 border border-[#C5A059]/50" loading="lazy" decoding="async">
+                <div class="bg-[#161b26] px-4 py-3 rounded-2xl rounded-bl-none shadow-sm border border-[#C5A059]/25 flex items-center gap-1.5">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="text-[10px] text-[#C5A059] font-bold ml-1">Judge está analizando...</span>
+                </div>
+            `;
+            chatBox.appendChild(typingLi);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                const el = document.getElementById(typingId);
+                if (el) el.remove();
+                renderJudgeMessage(responseObj);
+            }, 650);
+        }
+
+        function appendUserMessage(text) {
+            const chatBox = document.getElementById('chat-box');
+            const li = document.createElement('li');
+            li.className = 'flex justify-end animate-pop-in';
+            const safeText = escapeJudgeHTML(text);
+            li.innerHTML = `<div class="bg-gold-gradient text-[#0b0c10] px-4 py-3 rounded-2xl rounded-br-none text-xs md:text-sm font-extrabold shadow-md max-w-[82%]">${safeText}</div>`;
+            chatBox.appendChild(li);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function triggerQuickIntent(intentKey) {
+            const labels = {
+                welcome: "Ver todas las especialidades jurídicas",
+                penal: "Requiero asesoría en Defensa Penal y Criminalística",
+                mediacion: "Quiero información sobre Mediación Certificada (CNJ)",
+                civil: "Necesito asesoría en Derecho Civil, Contratos o Cobro de Deudas",
+                transito: "Necesito asistencia en un caso de Tránsito",
+                familia: "Deseo consulta en Derecho de Familia",
+                laboral: "Requiero asesoría Laboral o Tributaria (SRI)",
+                urgencia: "Deseo evaluar mi caso jurídico",
+                faq: "Ver Preguntas Frecuentes (FAQ)",
+                agendar: "Quiero agendar una consulta con un Abogado"
+            };
+            appendUserMessage(labels[intentKey] || intentKey);
+            const response = judgeKnowledgeBase[intentKey] || judgeKnowledgeBase.welcome;
+            showJudgeTypingAndReply(response);
+        }
+
+        function askJudgeFromPage(questionText) {
+            const win = document.getElementById('ai-chat-window');
+            if (win.classList.contains('hidden')) {
+                toggleChat();
+            }
+            setTimeout(() => {
+                appendUserMessage(questionText);
+                const reply = detectJudgeIntent(questionText);
+                showJudgeTypingAndReply(reply);
+            }, 250);
+        }
+
+        function resetJudgeChat() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML = '';
+            renderJudgeMessage(judgeKnowledgeBase.welcome);
+        }
+
+        function toggleChat() {
+            const win = document.getElementById('ai-chat-window');
+            if (win.classList.contains('hidden')) {
+                win.classList.remove('hidden');
+                const chatBox = document.getElementById('chat-box');
+                if (chatBox.children.length === 0) {
+                    renderJudgeMessage(judgeKnowledgeBase.welcome);
+                }
+                setTimeout(() => {
+                    win.classList.remove('scale-0');
+                    document.getElementById('chat-input').focus();
+                }, 15);
+            } else {
+                win.classList.add('scale-0');
+                setTimeout(() => win.classList.add('hidden'), 300);
+            }
+        }
+
+        function handleChat() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            appendUserMessage(text);
+            input.value = '';
+            const reply = detectJudgeIntent(text);
+            showJudgeTypingAndReply(reply);
         }
 
         // Menú Hamburguesa Móvil
